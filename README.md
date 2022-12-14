@@ -1,4 +1,4 @@
-Test example
+**Rest API Application for ICZ company. A simple web application for company project management.**
 
 The example is aimed at verifying basic programming skills. Assumed
 the solution time should not exceed one day.
