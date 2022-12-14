@@ -42,7 +42,7 @@ The application should be created in a three-layer architecture with separation 
 presentation layer. The application should follow basic security principles which
 they are intended to prevent unauthorized access to data.
 
-Additional requirements
+**Additional requirements**
 
 Create the application in the development environment of your choice. State the reasons for your use
 of the chosen environment.
