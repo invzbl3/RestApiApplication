@@ -52,7 +52,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().accessDeniedPage("/forbidden");
-
     }
 
     @Bean

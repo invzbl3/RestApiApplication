@@ -71,7 +71,7 @@ Above all, the following will be negatively evaluated:
 - untreated or inappropriately treated errors
 - failure to meet the requirements specified in the assignment
 
-Conditions
+**Conditions**
 
 1. Use of Java language in versions 8 and above
 2. The application must be able to be compiled using Ant, Maven or Gradle without errors.
