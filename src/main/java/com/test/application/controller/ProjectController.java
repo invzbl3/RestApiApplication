@@ -1,12 +1,11 @@
 package com.test.application.controller;
 
 import com.test.application.model.Project;
-import com.test.application.service.impl.ProjectService;
+import com.test.application.service.ProjectService;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -14,110 +13,51 @@ import java.util.List;
  * @author invzbl3 on 12/15/2022
  * @project RestApiApplication
  */
-@Controller
 @Data
+@RestController
+@AllArgsConstructor
+@RequestMapping("api/projects")
 public class ProjectController {
 
     private ProjectService projectService;
 
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
+    // build create Project REST API
+    @PostMapping
+    public ResponseEntity<Project> createProject(@RequestBody Project project) {
+        Project savedProject = projectService.createProject(project);
+        return new ResponseEntity<>(savedProject, HttpStatus.CREATED);
     }
 
-    @GetMapping("/create-project")
-    public String createProject(Model model) {
-        List<Project> projects = projectService.getAll();
-        model.addAttribute("roles", projects);
-        model.addAttribute("user", new Project());
-        return "create-project";
+    // build get user by id REST API
+    // http://localhost:8080/api/projects/1
+    @GetMapping("{id}")
+    public ResponseEntity<Project> getProjectById(@PathVariable("id") Long projectId) {
+        Project project = projectService.getProjectById(projectId);
+        return new ResponseEntity<>(project, HttpStatus.OK);
     }
 
-    @PostMapping("students/{marathon_id}/add")
-    public String createStudent(@PathVariable("marathon_id") long marathonId, @RequestParam("role_id") long roleId,
-                                @Validated @ModelAttribute User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "create-project";
-        }
-        user.setRole(roleService.getRoleById(roleId));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        projectService.addUserToMarathon(
-                studentService.createOrUpdateUser(user),
-                marathonService.getMarathonById(marathonId));
-        return "redirect:/students/" + marathonId;
+    // Build Get All Projects REST API
+    // http://localhost:8080/api/projects
+    @GetMapping
+    public ResponseEntity<List<Project>> getAllProjects() {
+        List<Project> projects = projectService.getAllProjects();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
-    @GetMapping("students/{marathon_id}/add")
-    public String createStudent(@RequestParam("user_id") long userId, @PathVariable("marathon_id") long marathonId) {
-        projectService.addUserToMarathon(
-                studentService.getUserById(userId),
-                marathonService.getMarathonById(marathonId));
-        return "redirect:/students/" + marathonId;
+    // Build Update Project REST API
+    @PutMapping("{id}")
+    // http://localhost:8080/api/projects/1
+    public ResponseEntity<Project> updateProject(@PathVariable("id") Long projectId,
+                                                 @RequestBody Project project) {
+        project.setId(projectId);
+        Project updatedProject = projectService.updateProject(project);
+        return new ResponseEntity<>(updatedProject, HttpStatus.OK);
     }
 
-    @GetMapping("/students/{marathon_id}/edit/{student_id}")
-    public String updateStudent(@PathVariable("marathon_id") long marathonId, @PathVariable("student_id") long studentId, Model model) {
-        User user = projectService.getUserById(studentId);
-        List<Role> roles = roleService.getAll();
-        model.addAttribute("user", user);
-        model.addAttribute("roles", roles);
-        return "update-student";
-    }
-
-    @PostMapping("/students/{marathon_id}/edit/{student_id}")
-    public String updateStudent(@PathVariable("marathon_id") long marathonId, @PathVariable("student_id") long studentId,
-                                @RequestParam("role_id") long roleId, @Validated @ModelAttribute User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "update-marathon";
-        }
-        user.setRole(roleService.getRoleById(roleId));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        projectService.createOrUpdateUser(user);
-        return "redirect:/students/" + marathonId;
-    }
-
-    @GetMapping("/students/{marathon_id}/delete/{student_id}")
-    public String deleteStudent(@PathVariable("marathon_id") long marathonId, @PathVariable("student_id") long studentId) {
-        projectService.deleteUserFromMarathon(
-                studentService.getUserById(studentId),
-                marathonService.getMarathonById(marathonId));
-        return "redirect:/students/" + marathonId;
-    }
-
-    @GetMapping("/students")
-    public String getAllProjects(Model model) {
-        List<Project> projects = projectService.getAll();
-        model.addAttribute("projects", projects);
-        return "projects";
-    }
-
-    @GetMapping("/students/edit/{id}")
-    public String updateProject(@PathVariable long id, Model model) {
-        Project project = projectService.getUserById(id);
-        //List<Role> roles = roleService.getAll();
-        model.addAttribute("project", project);
-        model.addAttribute("roles", roles);
-        return "update-student";
-    }
-
-    @PostMapping("/students/edit/{id}")
-    public String updateProject(@PathVariable long id, @RequestParam("role_id") long roleId,
-                                @Validated @ModelAttribute User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "update-marathon";
-        }
-        user.setRole(roleService.getRoleById(roleId));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        projectService.createOrUpdateUser(user);
-        return "redirect:/students";
-    }
-
-    @GetMapping("/projects/delete/{id}")
-    public String deleteProject(@PathVariable long id) {
-        User student = projectService.getProjectById(id);
-        for (Marathon marathon : student.getMarathons()) {
-            studentService.deleteUserFromMarathon(student, marathon);
-        }
-        projectService.deleteProjectById(id);
-        return "redirect:/students";
+    // Build Delete User REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteProject(@PathVariable("id") Long projectId) {
+        projectService.deleteProject(projectId);
+        return new ResponseEntity<>("Project successfully deleted!", HttpStatus.OK);
     }
 }

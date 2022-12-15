@@ -1,9 +1,5 @@
 package com.test.application.security;
 
-/**
- * @author invzbl3 on 12/15/2022
- * @project RestApiApplication
- */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -17,6 +13,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author invzbl3 on 12/15/2022
+ * @project RestApiApplication
+ */
 @Component
 public class AuthProviderImpl implements AuthenticationProvider {
 

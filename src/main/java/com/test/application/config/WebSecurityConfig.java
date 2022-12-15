@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.test.application")
-public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     private AuthProviderImpl authProvider;
 
@@ -63,7 +63,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             }
         };
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

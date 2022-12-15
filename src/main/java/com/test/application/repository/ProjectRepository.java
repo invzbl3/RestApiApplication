@@ -1,5 +1,7 @@
 package com.test.application.repository;
 
+import com.test.application.model.Project;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,5 +9,6 @@ import org.springframework.stereotype.Repository;
  * @project RestApiApplication
  */
 @Repository
-public interface ProjectRepository {
+public interface ProjectRepository extends JpaRepository<Project, Long> {
+    // all crud database methods
 }
