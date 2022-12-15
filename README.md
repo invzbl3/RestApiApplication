@@ -60,7 +60,6 @@ Positively evaluated will be:
 - compliance with the principles of object programming
 - comprehensibility and structure of the code
 - efficient and elegant procedures
-- - efficient and elegant procedures
 - programming code documentation
 - solution architecture
 - the complexity of project delivery for assessment
