@@ -60,3 +60,25 @@ Positively evaluated will be:
 - compliance with the principles of object programming
 - comprehensibility and structure of the code
 - efficient and elegant procedures
+- - efficient and elegant procedures
+- programming code documentation
+- solution architecture
+- the complexity of project delivery for assessment
+
+Above all, the following will be negatively evaluated:
+
+- the unstructuredness of the code or the lack of transparency of the code
+- duplicate code in several places
+- untreated or inappropriately treated errors
+- failure to meet the requirements specified in the assignment
+
+Conditions
+
+1. Use of Java language in versions 8 and above
+2. The application must be able to be compiled using Ant, Maven or Gradle without errors.
+3. Use of the Spring Boot framework, or Spring, Spring MVC or Spring Security and others.
+4. Use of appropriate technologies for access to the DB.
+5. The presentation layer can be programmed using the well-known technologies 
+HTML, CSS, JS or also using libraries jQuery, Angular, React, Vue, ...
+6. The solution must be compilable and executable from source codes.
+7. Creation of simple (max 1-2 A4) documentation for the solution

@@ -40,7 +40,7 @@ public class ProjectController {
         }
         user.setRole(roleService.getRoleById(roleId));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        studentService.addUserToMarathon(
+        projectService.addUserToMarathon(
                 studentService.createOrUpdateUser(user),
                 marathonService.getMarathonById(marathonId));
         return "redirect:/students/" + marathonId;
@@ -48,7 +48,7 @@ public class ProjectController {
 
     @GetMapping("students/{marathon_id}/add")
     public String createStudent(@RequestParam("user_id") long userId, @PathVariable("marathon_id") long marathonId) {
-        studentService.addUserToMarathon(
+        projectService.addUserToMarathon(
                 studentService.getUserById(userId),
                 marathonService.getMarathonById(marathonId));
         return "redirect:/students/" + marathonId;
@@ -56,7 +56,7 @@ public class ProjectController {
 
     @GetMapping("/students/{marathon_id}/edit/{student_id}")
     public String updateStudent(@PathVariable("marathon_id") long marathonId, @PathVariable("student_id") long studentId, Model model) {
-        User user = studentService.getUserById(studentId);
+        User user = projectService.getUserById(studentId);
         List<Role> roles = roleService.getAll();
         model.addAttribute("user", user);
         model.addAttribute("roles", roles);
@@ -71,13 +71,13 @@ public class ProjectController {
         }
         user.setRole(roleService.getRoleById(roleId));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        studentService.createOrUpdateUser(user);
+        projectService.createOrUpdateUser(user);
         return "redirect:/students/" + marathonId;
     }
 
     @GetMapping("/students/{marathon_id}/delete/{student_id}")
     public String deleteStudent(@PathVariable("marathon_id") long marathonId, @PathVariable("student_id") long studentId) {
-        studentService.deleteUserFromMarathon(
+        projectService.deleteUserFromMarathon(
                 studentService.getUserById(studentId),
                 marathonService.getMarathonById(marathonId));
         return "redirect:/students/" + marathonId;
@@ -117,7 +117,7 @@ public class ProjectController {
         for (Marathon marathon : student.getMarathons()) {
             studentService.deleteUserFromMarathon(student, marathon);
         }
-        projectService.deleteUserById(id);
+        projectService.deleteProjectById(id);
         return "redirect:/students";
     }
 }

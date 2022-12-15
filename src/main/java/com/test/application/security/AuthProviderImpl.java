@@ -4,8 +4,6 @@ package com.test.application.security;
  * @author invzbl3 on 12/15/2022
  * @project RestApiApplication
  */
-import com.softserve.edu.model.User;
-import com.softserve.edu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
