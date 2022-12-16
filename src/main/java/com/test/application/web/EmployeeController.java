@@ -36,30 +36,30 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/all")
+    @GetMapping("/all") // +
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employees = employeeService.getAllEmployee();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/find/{id}") // +- (it works, but restrictions on roles don't work properly)
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id) {
         Employee employee = employeeService.getASingleEmployee(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add") // +- (it works, but restrictions on roles don't work properly)
     public ResponseEntity<MessageResponse> addEmployee(@RequestBody EmployeeRequest employee) {
         MessageResponse newEmployee = employeeService.createEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{id}") // +- (it works, but restrictions on roles don't work properly)
     public Optional<Employee> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeRequest employee) {
         return employeeService.updateEmployee(id, employee);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}") // +- (it works, but restrictions on roles don't work properly)
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Integer id) {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);

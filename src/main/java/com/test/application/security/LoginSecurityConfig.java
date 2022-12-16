@@ -11,7 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author invzbl3 on 12/16/2022
  * @project RestApiApplication
  */
-// Postman & browser links:
+// Postman & browser links for testing purposes:
+
 // http://localhost:8081/api/employee/all
 // http://localhost:8081/api/employee/find/{id}
 // http://localhost:8081/api/employee/add
@@ -33,14 +34,23 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/all").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/all").access("hasRole('ROLE_USER') " +
+                        "or hasRole('ROLE_ADMIN')") // +
                 .antMatchers("/find/{id}").access("hasRole('ROLE_USER')")
+                // +- (it works, but restrictions on roles don't work properly)
                 .antMatchers("/add").access("hasRole('ROLE_ADMIN')")
+                // +- (it works, but restrictions on roles don't work properly)
                 .antMatchers("/update/{id}").access("hasRole('ROLE_ADMIN')")
+                // +- (it works, but restrictions on roles don't work properly)
                 .antMatchers("/delete/{id}").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                // +- (it works, but restrictions on roles don't work properly)
+                .antMatchers("/homePage").access("hasRole('ROLE_USER') " +
+                        "or hasRole('ROLE_ADMIN')")
+                //
                 .antMatchers("/userPage").access("hasRole('ROLE_USER')")
+                //
                 .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
+                //
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/loginPage")
