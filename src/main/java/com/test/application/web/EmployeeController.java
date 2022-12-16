@@ -21,7 +21,7 @@ import java.util.Optional;
 @Data
 @AllArgsConstructor
 @RestController
-@RequestMapping("api/employee")
+@RequestMapping("/employee")
 @ApiResponses(value = {
         @io.swagger.annotations.ApiResponse(code = 400, message = "This is a bad request, please follow the API documentation for the proper request format"),
         @io.swagger.annotations.ApiResponse(code = 401, message = "Due to security constraints, your access request cannot be authorized"),
