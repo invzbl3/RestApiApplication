@@ -21,11 +21,14 @@ import java.util.Optional;
 @Data
 @AllArgsConstructor
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 @ApiResponses(value = {
-        @io.swagger.annotations.ApiResponse(code = 400, message = "This is a bad request, please follow the API documentation for the proper request format"),
-        @io.swagger.annotations.ApiResponse(code = 401, message = "Due to security constraints, your access request cannot be authorized"),
-        @io.swagger.annotations.ApiResponse(code = 500, message = "The server is down. Please bear with us."),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "This is a bad request, " +
+                "please follow the API documentation for the proper request format"),
+        @io.swagger.annotations.ApiResponse(code = 401, message = "Due to security constraints, " +
+                "your access request cannot be authorized"),
+        @io.swagger.annotations.ApiResponse(code = 500, message = "The server is down. " +
+                "Please bear with us."),
 }
 )
 public class EmployeeController {

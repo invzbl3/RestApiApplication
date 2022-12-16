@@ -11,6 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author invzbl3 on 12/16/2022
  * @project RestApiApplication
  */
+// Postman & browser links:
+// http://localhost:8081/api/employee/all
+// http://localhost:8081/api/employee/find/{id}
+// http://localhost:8081/api/employee/add
+// http://localhost:8081/api/employee/update/{id}
+// http://localhost:8081/api/employee/delete/{id}
 @Configuration
 @EnableWebSecurity
 public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,10 +33,16 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/all").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/find/{id}").access("hasRole('ROLE_USER')")
+                .antMatchers("/add").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/update/{id}").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/delete/{id}").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/userPage").access("hasRole('ROLE_USER')")
                 .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
                 .and()
+                .csrf().disable()
                 .formLogin().loginPage("/loginPage")
                 .defaultSuccessUrl("/homePage")
                 .failureUrl("/loginPage?error")
