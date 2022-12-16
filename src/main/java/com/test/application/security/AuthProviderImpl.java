@@ -1,6 +1,6 @@
 package com.test.application.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,12 +11,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;*/
 
 /**
  * @author invzbl3 on 12/15/2022
  * @project RestApiApplication
  */
+/*
 @Component
 public class AuthProviderImpl implements AuthenticationProvider {
 
@@ -51,4 +52,4 @@ public class AuthProviderImpl implements AuthenticationProvider {
     public boolean supports(Class<?> aClass) {
         return aClass.equals(UsernamePasswordAuthenticationToken.class);
     }
-}
+}*/
