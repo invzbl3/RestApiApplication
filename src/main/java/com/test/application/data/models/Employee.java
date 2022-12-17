@@ -1,5 +1,6 @@
 package com.test.application.data.models;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @author invzbl3 on 12/16/2022
  * @project RestApiApplication
  */
+@Data
 @Entity
 @ToString
 @EqualsAndHashCode
@@ -37,19 +39,8 @@ public class Employee implements UserDetails {
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
 
-    public Employee(Set<? extends GrantedAuthority> grantedAuthorities,
-                    String password, String username,
-                    boolean isAccountNonExpired,
-                    boolean isAccountNonLocked,
-                    boolean isCredentialsNonExpired,
-                    boolean isEnabled){
-        this.grantedAuthorities = grantedAuthorities;
-        this.password = password;
-        this.username = username;
-        this.isAccountNonExpired = isAccountNonExpired;
-        this.isAccountNonLocked = isAccountNonLocked;
-        this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
+    public Employee() {
+
     }
 
     public Integer getId() {
