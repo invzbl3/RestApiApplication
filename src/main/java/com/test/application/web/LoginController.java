@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 // http://localhost:8888/api/page/adminPage
 // http://localhost:8888/api/page/loginPage
 @RestController
-@RequestMapping("/api/page/")
+@RequestMapping("/api/page")
 public class LoginController {
 
     @GetMapping("/welcomePage")

@@ -3,6 +3,7 @@ package com.test.application.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,32 +27,47 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.authorizeRequests()
-                .antMatchers("/all").access("hasRole('ROLE_USER') " +
-                        "or hasRole('ROLE_ADMIN')") // +
-                .antMatchers("/find/{id}").access("hasRole('ROLE_USER')")
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/all")
+                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')") // +
+                .antMatchers("/find/{id}")
+                .access("hasAuthority('ROLE_ADMIN')")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/add").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/add")
+                .access("hasAuthority('ROLE_ADMIN')")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/update/{id}").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/update/{id}")
+                .access("hasAuthority('ROLE_ADMIN')")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/delete/{id}").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/delete/{id}")
+                .access("hasAuthority('ROLE_ADMIN')")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/homePage").access("hasRole('ROLE_USER') " +
-                        "or hasRole('ROLE_ADMIN')")
+                .antMatchers("/homePage")
+                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
                 //
-                .antMatchers("/userPage").access("hasRole('ROLE_USER')")
+                .antMatchers("/userPage")
+                .access("hasAuthority('ROLE_USER')")
                 //
-                .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/adminPage")
+                .access("hasAuthority('ROLE_ADMIN')")
                 //
+                .anyRequest()
+                .authenticated()
                 .and()
-                .csrf().disable()
-                .formLogin().loginPage("/loginPage")
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/loginPage?logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/login")
+                .loginPage("/loginPage")
                 .defaultSuccessUrl("/homePage")
                 .failureUrl("/loginPage?error")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutSuccessUrl("/loginPage?logout");
+                .usernameParameter("username")
+                .passwordParameter("password");
     }
 }
