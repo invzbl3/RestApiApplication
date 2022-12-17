@@ -11,13 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author invzbl3 on 12/16/2022
  * @project RestApiApplication
  */
-// Postman & browser links for testing purposes:
-
-// http://localhost:8081/api/employee/all
-// http://localhost:8081/api/employee/find/{id}
-// http://localhost:8081/api/employee/add
-// http://localhost:8081/api/employee/update/{id}
-// http://localhost:8081/api/employee/delete/{id}
 @Configuration
 @EnableWebSecurity
 public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
