@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public MessageResponse createEmployee(EmployeeRequest employeeRequest) {
-        Employee newEmployee = new Employee(grantedAuthorities, password, username, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled);
+        Employee newEmployee = new Employee();
         newEmployee.setFirstName(employeeRequest.getFirstName());
         newEmployee.setLastname(employeeRequest.getLastname());
         newEmployee.setPhoneNumber(employeeRequest.getPhoneNumber());
