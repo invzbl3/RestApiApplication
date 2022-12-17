@@ -2,6 +2,7 @@ package com.test.application.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,28 +31,21 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/all")
-                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')") // +
-                .antMatchers("/find/{id}")
-                .access("hasAuthority('ROLE_ADMIN')")
+                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.GET,"/find/**").hasRole("ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/add")
-                .access("hasAuthority('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST,"/add").hasRole("ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/update/{id}")
-                .access("hasAuthority('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.PUT, "/update/**").hasRole("ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/delete/{id}")
-                .access("hasAuthority('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.DELETE,"/delete/**").hasRole("ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
                 .antMatchers("/homePage")
                 .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-                //
                 .antMatchers("/userPage")
                 .access("hasAuthority('ROLE_USER')")
-                //
                 .antMatchers("/adminPage")
                 .access("hasAuthority('ROLE_ADMIN')")
-                //
                 .and()
                 .logout()
                 .logoutUrl("/logout")
