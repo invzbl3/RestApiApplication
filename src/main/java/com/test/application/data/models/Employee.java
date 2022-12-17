@@ -28,6 +28,7 @@ public class Employee implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Department department;
 
+    @Transient
     private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final String password;
     private final String username;
