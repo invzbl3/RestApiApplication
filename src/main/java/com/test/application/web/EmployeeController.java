@@ -18,6 +18,13 @@ import java.util.Optional;
  * @author invzbl3 on 12/15/2022
  * @project RestApiApplication
  */
+// Browser links for testing purposes:
+
+// http://localhost:8080/api/employee/all
+// http://localhost:8080/api/employee/find/{id}
+// http://localhost:8080/api/employee/add
+// http://localhost:8080/api/employee/update/{id}
+// http://localhost:8080/api/employee/delete/{id}
 @Data
 @AllArgsConstructor
 @RestController

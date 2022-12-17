@@ -1,9 +1,6 @@
 package com.test.application.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -12,15 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
  */
 // Postman & browser links for testing purposes:
 
-// http://localhost:8081/api/employee/all
-// http://localhost:8081/api/employee/find/{id}
-// http://localhost:8081/api/employee/add
-// http://localhost:8081/api/employee/update/{id}
-// http://localhost:8081/api/employee/delete/{id}
+// http://localhost:8888/api/page/welcomePage
+// http://localhost:8888/api/page/homePage
+// http://localhost:8888/api/page/userPage
+// http://localhost:8888/api/page/adminPage
+// http://localhost:8888/api/page/loginPage
 @RestController
+@RequestMapping("/api/page/")
 public class LoginController {
 
-    @RequestMapping(value = { "/"}, method = RequestMethod.GET)
+    @GetMapping("/welcomePage")
     public ModelAndView welcomePage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("welcomePage");
@@ -31,7 +29,7 @@ public class LoginController {
      * Updated homePage.jsp file to provide User and Admin Roles specific activities.
      * homePage.jsp
      */
-    @RequestMapping(value = { "/homePage"}, method = RequestMethod.GET)
+    @GetMapping("/homePage")
     public ModelAndView homePage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("homePage");
@@ -41,29 +39,25 @@ public class LoginController {
     /*
      * '/userPage' is used by USER Role to access and perform Normal user activities.
      */
-    @RequestMapping(value = {"/userPage"}, method = RequestMethod.GET)
+    @GetMapping("/userPage")
     public ModelAndView userPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("userPage");
         return model;
     }
 
-
     /*
      * '/adminPage' is used by ADMIN Role to access and perform Admin user activities.
      * ADMIN role can access “/userPage” URL too.
      */
-    @RequestMapping(value = {"/adminPage"}, method = RequestMethod.GET)
+    @GetMapping("/adminPage")
     public ModelAndView adminPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("adminPage");
         return model;
     }
 
-    /*
-     *
-     */
-    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+    @GetMapping("/loginPage")
     public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,
                                   @RequestParam(value = "logout",	required = false) String logout) {
 
