@@ -52,8 +52,6 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/adminPage")
                 .access("hasAuthority('ROLE_ADMIN')")
                 //
-                .anyRequest()
-                .authenticated()
                 .and()
                 .logout()
                 .logoutUrl("/logout")
