@@ -1,14 +1,22 @@
 package com.test.application.data.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author invzbl3 on 12/16/2022
  * @project RestApiApplication
  */
 @Entity
-public class Employee {
+@ToString
+@EqualsAndHashCode
+public class Employee implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -20,7 +28,28 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Department department;
 
-    public Employee(){}
+    private final Set<? extends GrantedAuthority> grantedAuthorities;
+    private final String password;
+    private final String username;
+    private final boolean isAccountNonExpired;
+    private final boolean isAccountNonLocked;
+    private final boolean isCredentialsNonExpired;
+    private final boolean isEnabled;
+
+    public Employee(Set<? extends GrantedAuthority> grantedAuthorities,
+                    String password, String username,
+                    boolean isAccountNonExpired,
+                    boolean isAccountNonLocked,
+                    boolean isCredentialsNonExpired,
+                    boolean isEnabled){
+        this.grantedAuthorities = grantedAuthorities;
+        this.password = password;
+        this.username = username;
+        this.isAccountNonExpired = isAccountNonExpired;
+        this.isAccountNonLocked = isAccountNonLocked;
+        this.isCredentialsNonExpired = isCredentialsNonExpired;
+        this.isEnabled = isEnabled;
+    }
 
     public Integer getId() {
         return id;
@@ -79,28 +108,37 @@ public class Employee {
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", salary=" + salary +
-                ", department=" + department +
-                '}';
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(() -> "USER");
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Double.compare(employee.salary, salary) == 0 && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastname, employee.lastname) && Objects.equals(phoneNumber, employee.phoneNumber) && Objects.equals(email, employee.email) && department == employee.department;
+    public String getPassword() {
+        return password;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastname, phoneNumber, email, salary, department);
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
     }
 }
