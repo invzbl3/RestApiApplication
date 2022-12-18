@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
  */
 // Postman & browser links for testing purposes:
 
-// http://localhost:8888/api/page/welcomePage
-// http://localhost:8888/api/page/homePage
-// http://localhost:8888/api/page/userPage
-// http://localhost:8888/api/page/adminPage
-// http://localhost:8888/api/page/loginPage
+// http://localhost:8080/api/page/welcomePage
+// http://localhost:8080/api/page/homePage
+// http://localhost:8080/api/page/userPage
+// http://localhost:8080/api/page/adminPage
+// http://localhost:8080/api/page/loginPage
 @RestController
 @RequestMapping("/api/page")
 public class LoginController {
