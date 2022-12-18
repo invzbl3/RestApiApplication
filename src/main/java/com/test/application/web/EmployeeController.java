@@ -49,24 +49,24 @@ public class EmployeeController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}") // +- (it works, but restrictions on roles don't work properly)
+    @GetMapping("/find/{id}") // +
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id) {
         Employee employee = employeeService.getASingleEmployee(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
-    @PostMapping("/add") // +- (it works, but restrictions on roles don't work properly)
+    @PostMapping("/add") // +
     public ResponseEntity<MessageResponse> addEmployee(@RequestBody EmployeeRequest employee) {
         MessageResponse newEmployee = employeeService.createEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}") // +- (it works, but restrictions on roles don't work properly)
+    @PutMapping("/update/{id}") // +
     public Optional<Employee> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeRequest employee) {
         return employeeService.updateEmployee(id, employee);
     }
 
-    @DeleteMapping("/delete/{id}") // +- (it works, but restrictions on roles don't work properly)
+    @DeleteMapping("/delete/{id}") // +
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Integer id) {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);

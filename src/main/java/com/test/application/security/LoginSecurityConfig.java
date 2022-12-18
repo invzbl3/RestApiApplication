@@ -20,17 +20,12 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-        /*authenticationMgr.inMemoryAuthentication()
-                .withUser("user").password("user").authorities("ROLE_USER")
-                .and()
-                .withUser("admin").password("admin").authorities("ROLE_USER","ROLE_ADMIN");*/
-
         authenticationMgr.inMemoryAuthentication()
                 .withUser("user").password("user").password("{noop}user")
                 .authorities("ROLE_USER")
                 .and()
                 .withUser("admin").roles("admin").password("{noop}admin")
-                .authorities("ROLE_USER","ROLE_ADMIN");
+                .authorities("ROLE_USER", "ROLE_ADMIN");
     }
 
     @Override
@@ -39,14 +34,10 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/all").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/employee/find/**").hasAuthority("ROLE_ADMIN")
-                // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers(HttpMethod.POST,"/api/employee/add").hasAuthority("ROLE_ADMIN")
-                // +- (it works, but restrictions on roles don't work properly)
+                .antMatchers(HttpMethod.GET, "/api/employee/find/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/employee/add").hasAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/employee/update/**").hasAuthority("ROLE_ADMIN")
-                // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers(HttpMethod.DELETE,"/api/employee/delete/**").hasAuthority("ROLE_ADMIN")
-                // +- (it works, but restrictions on roles don't work properly)
+                .antMatchers(HttpMethod.DELETE, "/api/employee/delete/**").hasAuthority("ROLE_ADMIN")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
