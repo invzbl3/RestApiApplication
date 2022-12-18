@@ -20,32 +20,33 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-        authenticationMgr.inMemoryAuthentication()
+        /*authenticationMgr.inMemoryAuthentication()
                 .withUser("user").password("user").authorities("ROLE_USER")
                 .and()
-                .withUser("admin").password("admin").authorities("ROLE_USER","ROLE_ADMIN");
+                .withUser("admin").password("admin").authorities("ROLE_USER","ROLE_ADMIN");*/
+
+        authenticationMgr.inMemoryAuthentication()
+                .withUser("user").password("user").password("{noop}user")
+                .authorities("ROLE_USER")
+                .and()
+                .withUser("admin").roles("admin").password("{noop}admin")
+                .authorities("ROLE_USER","ROLE_ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.httpBasic()
+                .and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/all")
-                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.GET,"/find/**").hasRole("ADMIN")
+                .antMatchers("/all").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/employee/find/**").hasAuthority("ROLE_ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers(HttpMethod.POST,"/add").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/employee/add").hasAuthority("ROLE_ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers(HttpMethod.PUT, "/update/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/employee/update/**").hasAuthority("ROLE_ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers(HttpMethod.DELETE,"/delete/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/api/employee/delete/**").hasAuthority("ROLE_ADMIN")
                 // +- (it works, but restrictions on roles don't work properly)
-                .antMatchers("/homePage")
-                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-                .antMatchers("/userPage")
-                .access("hasAuthority('ROLE_USER')")
-                .antMatchers("/adminPage")
-                .access("hasAuthority('ROLE_ADMIN')")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
