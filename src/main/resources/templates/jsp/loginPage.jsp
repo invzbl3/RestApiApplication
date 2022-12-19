@@ -1,4 +1,4 @@
-<%@ include file="welcomePage.html" %>
+<%@ include file="welcomePage.jsp" %>
 <hr/>
 
 <h3>Login Form</h3>
