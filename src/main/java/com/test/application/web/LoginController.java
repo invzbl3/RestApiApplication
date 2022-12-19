@@ -1,5 +1,6 @@
 package com.test.application.web;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 // http://localhost:8080/api/page/userPage
 // http://localhost:8080/api/page/adminPage
 // http://localhost:8080/api/page/loginPage
-@RestController
+@Controller
 @RequestMapping("/api/page")
 public class LoginController {
 
