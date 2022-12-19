@@ -1,4 +1,4 @@
-<%@ include file="welcomePage.jsp" %>
+<jsp:include page="welcomePage.jsp"/>
 <hr/>
 
 <h3>Login Form</h3>
