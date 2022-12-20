@@ -1,5 +1,6 @@
 package com.test.application.web;
 
+import com.test.application.data.models.Project;
 import com.test.application.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +29,7 @@ public class ProjectController {
     public ResponseEntity<Object> findAllProjects(@RequestBody PageVO pageVO) {
 
         Pageable pageable = PageRequest.of(pageVO.getStart(),pageVO.getLength(), Sort.Direction.ASC,"id");
-        Page<Crud> page = crudRepository.findAll(pageable);
+        Page<Project> page = projectRepository.findAll(pageable);
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
@@ -37,10 +38,10 @@ public class ProjectController {
      */
     @PostMapping("/addProject")
     @ResponseBody
-    public ResponseEntity<Object> addProject(@RequestBody  Crud crud) {
+    public ResponseEntity<Object> addProject(@RequestBody  Project project) {
 
         if (crud != null) {
-            crudRepository.save(crud);
+            projectRepository.save(crud);
             return new ResponseEntity<>("Added successfully.", HttpStatus.OK);
         }
         return new ResponseEntity<>("Add failed.", HttpStatus.OK);
@@ -51,10 +52,10 @@ public class ProjectController {
      */
     @PutMapping("/updateProject")
     @ResponseBody
-    public ResponseEntity<Object> updateById(@RequestBody  Crud crud) {
+    public ResponseEntity<Object> updateById(@RequestBody Project project) {
 
-        if (crud != null) {
-            crudRepository.save(crud);
+        if (project != null) {
+            projectRepository.save(project);
             return new ResponseEntity<>("编辑成功", HttpStatus.OK);
         }
         return new ResponseEntity<>("编辑失败", HttpStatus.OK);
@@ -69,7 +70,7 @@ public class ProjectController {
         if (id.equals("")) {
             return new ResponseEntity<>("删除成功", HttpStatus.OK);
         }
-        crudRepository.deleteById(id);
+        projectRepository.deleteById(id);
         return new ResponseEntity<>("删除成功", HttpStatus.OK);
     }
 }
