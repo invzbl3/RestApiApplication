@@ -5,8 +5,8 @@ package com.test.application.data.enums;
  * @project RestApiApplication
  */
 public enum Role {
-    PM,
     TEAM_LEADER,
+    PM,
     DEVELOPER,
     SCIENTIST,
     ENGINEER
