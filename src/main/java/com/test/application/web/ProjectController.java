@@ -1,6 +1,7 @@
 package com.test.application.web;
 
 import com.test.application.data.models.Project;
+import com.test.application.dto.ProjectDTO;
 import com.test.application.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
@@ -22,6 +26,11 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    /**
+     * Logger declaration for knowing the flow of execution for debugging
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
     /**
      * list of projects
@@ -39,8 +48,9 @@ public class ProjectController {
      * to get List of projects from database based on companyId
      */
     @RequestMapping(value="/{companyId}", method = RequestMethod.GET)
-    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
-                                                          HttpServletRequest req) throws ErrorHandling {
+    public @ResponseBody
+    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+                                     HttpServletRequest req) throws ErrorHandling {
         logger.info("findAllProjects is calling : " );
         Long longCompanyId = Long.parseLong(companyId);
         List<Project> projectList = projectService.getAllProjects(longcompanyId);
