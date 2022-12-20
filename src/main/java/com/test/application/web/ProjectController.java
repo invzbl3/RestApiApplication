@@ -36,14 +36,15 @@ public class ProjectController {
     @GetMapping("/projects")
     @Operation(summary = "Get list of all projects")
     public ResponseEntity<Object> findAllProjects(@RequestBody PageVO pageVO) {
-        Pageable pageable = PageRequest.of(pageVO.getStart(),pageVO.getLength(), Sort.Direction.ASC,"id");
+        Pageable pageable = PageRequest.of(pageVO.getStart(), pageVO.getLength(), Sort.Direction.ASC, "id");
         Page<Project> page = projectRepository.findAll(pageable);
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{companyId}")
     @Operation(summary = "Get list of projects from database based on companyId")
-    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+    public @ResponseBody
+    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
                                      HttpServletRequest req) throws ErrorHandling {
         logger.info("findAllProjects is calling : ");
         Long longCompanyId = Long.parseLong(companyId);
@@ -59,7 +60,7 @@ public class ProjectController {
 
     @PostMapping("/addProject")
     @Operation(summary = "Add new project")
-    public ResponseEntity<Object> addProject(@RequestBody  Project project) {
+    public ResponseEntity<Object> addProject(@RequestBody Project project) {
 
         if (project != null) {
             projectRepository.save(project);
