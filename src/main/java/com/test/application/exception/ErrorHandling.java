@@ -1,7 +1,5 @@
 package com.test.application.exception;
 
-import java.util.Optional;
-
 /**
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
