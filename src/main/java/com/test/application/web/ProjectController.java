@@ -40,8 +40,8 @@ public class ProjectController {
     @ResponseBody
     public ResponseEntity<Object> addProject(@RequestBody  Project project) {
 
-        if (crud != null) {
-            projectRepository.save(crud);
+        if (project != null) {
+            projectRepository.save(project);
             return new ResponseEntity<>("Added successfully.", HttpStatus.OK);
         }
         return new ResponseEntity<>("Add failed.", HttpStatus.OK);
