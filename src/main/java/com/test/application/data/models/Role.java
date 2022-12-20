@@ -6,8 +6,8 @@ package com.test.application.data.models;
  */
 public enum Role {
     PM,
-    TL,
-    DEV,
-    Sc,
-    Eng
+    TEAM_LEADER,
+    DEVELOPER,
+    SCIENTIST,
+    ENGINEER
 }
