@@ -31,6 +31,7 @@ public class ProjectController {
     ProjectRepository projectRepository;
     @Autowired
     ProjectService projectService;
+    ProjectAdaptor projectAdaptor = new ProjectAdaptor();
 
     /**
      * Logger declaration for knowing the flow of execution for debugging
