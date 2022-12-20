@@ -1,10 +1,42 @@
 package com.test.application.data.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.test.application.dto.ProjectDTO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 /**
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
  */
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "project_entity")
+@Table(name = "projects")
 public class Project {
 
+    public Project(ProjectDTO projectDTO) {
+        this.name = projectDTO.getName();
+        this.abbreviation = projectDTO.getAbbreviation();
+        this.customer = projectDTO.getCustomer();
+    }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "project_id")
+    private Integer id;
+
+    private String name;
+
+    private String abbreviation;
+
+    private String customer;
 }
