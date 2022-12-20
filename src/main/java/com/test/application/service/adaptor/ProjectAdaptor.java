@@ -1,8 +1,10 @@
 package com.test.application.service.adaptor;
 
 import com.test.application.data.models.Project;
+import com.test.application.data.models.Role;
 import com.test.application.dto.ProjectDTO;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
 
     @Override
     public List<Project> uiDtoToDatabaseModelList(List<ProjectDTO> projectDtoList) {
-        List<Project> projectList = new ArrayList<Project>();
+        List<Project> projectList = new ArrayList<>();
         for (ProjectDTO projectDto : projectDtoList) {
 
             projectList.add(uiDtoToDatabaseModel(projectDto));
@@ -23,7 +25,7 @@ public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
 
     @Override
     public List<ProjectDTO> databaseModelToUiDtoList(List<Project> projectList) {
-        List<ProjectDTO> projectDtoList = new ArrayList<ProjectDTO>();
+        List<ProjectDTO> projectDtoList = new ArrayList<>();
         for (Project project : projectList) {
 
             projectDtoList.add(databaseModelToUiDto(project));
@@ -55,8 +57,8 @@ public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
         groupg.setGroupId(1l);
         project.setGroupg(groupg);
 
-        Department department = new Department();
-        department.setDepartmentId(projectDto.getDepartmentId());
+        Role role = new Role();
+        role.setRoleID(projectDto.getRoleId());
         department.setDepartmentName(projectDto.getDepartmentName());
         project.setDepartment(department);
         Client client = new Client();
@@ -82,7 +84,6 @@ public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
             projectDto.setClientId(project.getClient().getClientId());
             projectDto.setClientName(project.getClient().getClientName());
         }
-
         return projectDto;
     }
 }
