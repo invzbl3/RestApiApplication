@@ -1,6 +1,6 @@
 package com.test.application.data.payloads.request;
 
-import com.test.application.data.models.Department;
+import com.test.application.data.models.Role;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
@@ -34,7 +34,7 @@ public class EmployeeRequest {
     @NotBlank
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Department department;
+    private Role department;
 
     public String getFirstName() {
         return firstName;
@@ -76,11 +76,11 @@ public class EmployeeRequest {
         this.salary = salary;
     }
 
-    public Department getDepartment() {
+    public Role getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(Role department) {
         this.department = department;
     }
 }

@@ -27,7 +27,7 @@ public class Employee implements UserDetails {
     private String email;
     private double salary;
     @Enumerated(EnumType.STRING)
-    private Department department;
+    private Role role;
     private String password;
     private String username;
 
