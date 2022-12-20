@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author invzbl3 on 12/20/2022
@@ -86,11 +87,12 @@ public class ProjectController {
 
     @DeleteMapping("/project/{id}")
     @Operation(summary = "Deleting project")
-    public ResponseEntity<Object> deleteById(@PathVariable("id") Integer id) {
-        if (id.equals("")) {
+    public ResponseEntity<Object> deleteById(@PathVariable("id") Long id) {
+        Optional<Project> project = projectRepository.findById(id);
+        if (project.isPresent()) {
+            projectRepository.deleteById(id);
             return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
         }
-        projectRepository.deleteById(id);
         return new ResponseEntity<>("Delete failed.", HttpStatus.OK);
     }
 }
