@@ -49,7 +49,7 @@ public class ProjectController {
     }
 
     /*
-     * editing project
+     * updating project
      */
     @PutMapping("/updateProject")
     @ResponseBody
@@ -57,9 +57,9 @@ public class ProjectController {
 
         if (project != null) {
             projectRepository.save(project);
-            return new ResponseEntity<>("编辑成功", HttpStatus.OK);
+            return new ResponseEntity<>("Updated successfully.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("编辑失败", HttpStatus.OK);
+        return new ResponseEntity<>("Update failed.", HttpStatus.OK);
     }
 
     /*
@@ -69,9 +69,9 @@ public class ProjectController {
     @ResponseBody
     public ResponseEntity<Object> deleteById(@PathVariable("id") Integer id) {
         if (id.equals("")) {
-            return new ResponseEntity<>("删除成功", HttpStatus.OK);
+            return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
         }
         projectRepository.deleteById(id);
-        return new ResponseEntity<>("删除成功", HttpStatus.OK);
+        return new ResponseEntity<>("Delete failed.", HttpStatus.OK);
     }
 }

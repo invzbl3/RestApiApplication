@@ -5,4 +5,6 @@ package com.test.application.service;
  * @project RestApiApplication
  */
 public interface ProjectService {
+
+
 }
