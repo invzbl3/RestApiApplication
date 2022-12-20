@@ -2,6 +2,7 @@ package com.test.application.web;
 
 import com.test.application.exception.ErrorHandling;
 import com.test.application.service.ProjectService;
+import com.test.application.service.adaptor.ProjectAdaptor;
 import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
