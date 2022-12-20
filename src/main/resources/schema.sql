@@ -7,9 +7,9 @@ drop table if exists projects;
 /*==============================================================*/
 create table projects
 (
-    name          varchar(100)        not null,
-    abbreviation  varchar(100)        not null,
-    customer      varchar(100)        not null,
+    name          varchar(100) not null,
+    abbreviation  varchar(100) not null,
+    customer      varchar(100) not null,
 ) CHARACTER SET utf8;
 
 /*==============================================================*/
