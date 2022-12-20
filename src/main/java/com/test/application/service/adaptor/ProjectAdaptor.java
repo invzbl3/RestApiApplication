@@ -54,7 +54,7 @@ public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
 
         project.setDateUpdate(new Date());
         project.setUserIdUpdate(projectDto.getUserIdUpdate());
-        groupg.setGroupId(1l);
+        groupg.setGroupId(1L);
         project.setGroupg(groupg);
 
         Role role = new Role();

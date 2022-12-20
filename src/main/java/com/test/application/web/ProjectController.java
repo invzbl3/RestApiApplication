@@ -43,8 +43,8 @@ public class ProjectController {
 
     @GetMapping("/projects")
     @Operation(summary = "Get list of all projects")
-    public ResponseEntity<Object> findAllProjects(@RequestBody Page page) {
-        Pageable pageable = PageRequest.of(page.getStart(), page.getLength(), Sort.Direction.ASC, "id");
+    public ResponseEntity<Object> findAllProjects(@RequestBody PageVO pageVo) {
+        Pageable pageable = PageRequest.of(pageVo.getStart(), pageVo.getLength(), Sort.Direction.ASC, "id");
         Page<Project> page = projectRepository.findAll(pageable);
         return new ResponseEntity<>(page, HttpStatus.OK);
     }

@@ -6,56 +6,38 @@ import java.util.Optional;
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
  */
-public class ErrorHandling {
+public class ErrorHandling extends BaseException {
 
-    void handleErrorByThrowingIllegalArgumentException() throws IllegalArgumentException {
-        throw new IllegalArgumentException();
+    private String message;
+    private String errorMessage;
+
+    public ErrorHandling() {}
+
+    public ErrorHandling( String message ) {
+        this.message = message;
     }
 
-    void handleErrorByThrowingIllegalArgumentExceptionWithDetailMessage(String message)
-            throws IllegalArgumentException {
-        throw new IllegalArgumentException(message);
+    /**
+     * @return the errorMessage
+     */
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    void handleErrorByThrowingAnyCheckedException() throws Exception {
-        throw new Exception();
+    /**
+     * @param errorMessage the errorMessage to set
+     */
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
-    void handleErrorByThrowingAnyCheckedExceptionWithDetailMessage(String message)
-            throws Exception {
-        throw new Exception(message);
+
+    public final String getMessage() {
+        return message;
     }
 
-    void handleErrorByThrowingAnyUncheckedException() {
-        throw new RuntimeException();
-    }
 
-    void handleErrorByThrowingAnyUncheckedExceptionWithDetailMessage(String message) {
-        throw new RuntimeException(message);
-    }
-
-    void handleErrorByThrowingCustomCheckedException() throws CustomCheckedException {
-        throw new CustomCheckedException();
-    }
-
-    void handleErrorByThrowingCustomCheckedExceptionWithDetailMessage(String message)
-            throws CustomCheckedException {
-        throw new CustomCheckedException(message);
-    }
-
-    void handleErrorByThrowingCustomUncheckedException() throws CustomUncheckedException {
-        throw new CustomUncheckedException();
-    }
-
-    void handleErrorByThrowingCustomUncheckedExceptionWithDetailMessage(String message) {
-        throw new CustomUncheckedException(message);
-    }
-
-    Optional<Integer> handleErrorByReturningOptionalInstance(String integer) {
-        try {
-            return Optional.of(Integer.parseInt(integer));
-        } catch (NumberFormatException e) {
-            return Optional.empty();
-        }
+    public final void setMessage(String message) {
+        this.message = message;
     }
 }
