@@ -1,5 +1,6 @@
 package com.test.application.web;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.test.application.data.models.Project;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
  */
-@Controller
+@RestController
 @RequestMapping("/project")
 public class ProjectController {
 
@@ -33,11 +33,8 @@ public class ProjectController {
      */
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
-    /**
-     * list of projects
-     */
     @GetMapping("/projects")
-    @ResponseBody
+    @Operation(summary = "Get list of all projects")
     public ResponseEntity<Object> findAllProjects(@RequestBody PageVO pageVO) {
 
         Pageable pageable = PageRequest.of(pageVO.getStart(),pageVO.getLength(), Sort.Direction.ASC,"id");
@@ -45,30 +42,24 @@ public class ProjectController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    /**
-     * to get List of projects from database based on companyId
-     */
-    @RequestMapping(value="/{companyId}", method = RequestMethod.GET)
-    public @ResponseBody
-    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+    @GetMapping(value = "/{companyId}")
+    @Operation(summary = "get list of projects from database based on companyId")
+    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
                                      HttpServletRequest req) throws ErrorHandling {
-        logger.info("findAllProjects is calling : " );
+        logger.info("findAllProjects is calling : ");
         Long longCompanyId = Long.parseLong(companyId);
-        List<Project> projectList = projectService.getAllProjects(longcompanyId);
-        logger.info("findAllProjects ProjectList : " +projectList);
+        List<Project> projectList = projectService.getAllProjects(longCompanyId);
+        logger.info("findAllProjects ProjectList : " + projectList);
 
-        if (projectList != null && projectList.size() > 0)
+        if (projectList != null && projectList.size() > 0) {
             return projectAdaptor.databaseModelToUiDtoList(projectList);
-        else
+        } else {
             throw new ErrorHandling("Project data not present");
+        }
     }
 
-
-    /**
-     * new project
-     */
     @PostMapping("/addProject")
-    @ResponseBody
+    @Operation(summary = "Add new project")
     public ResponseEntity<Object> addProject(@RequestBody  Project project) {
 
         if (project != null) {
@@ -78,13 +69,9 @@ public class ProjectController {
         return new ResponseEntity<>("Add failed.", HttpStatus.OK);
     }
 
-    /**
-     * updating project
-     */
     @PutMapping("/updateProject")
-    @ResponseBody
+    @Operation(summary = "Updating project")
     public ResponseEntity<Object> updateById(@RequestBody Project project) {
-
         if (project != null) {
             projectRepository.save(project);
             return new ResponseEntity<>("Updated successfully.", HttpStatus.OK);
@@ -92,11 +79,8 @@ public class ProjectController {
         return new ResponseEntity<>("Update failed.", HttpStatus.OK);
     }
 
-    /**
-     * deleting the project
-     */
     @DeleteMapping("/project/{id}")
-    @ResponseBody
+    @Operation(summary = "Deleting project")
     public ResponseEntity<Object> deleteById(@PathVariable("id") Integer id) {
         if (id.equals("")) {
             return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
