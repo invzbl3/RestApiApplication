@@ -1,4 +1,4 @@
-package com.test.application.data.models;
+package com.test.application.data.enums;
 
 /**
  * @author invzbl3 on 12/15/2022

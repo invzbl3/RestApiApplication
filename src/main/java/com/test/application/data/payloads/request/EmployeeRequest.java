@@ -1,6 +1,6 @@
 package com.test.application.data.payloads.request;
 
-import com.test.application.data.models.Role;
+import com.test.application.data.enums.Role;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;

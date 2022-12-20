@@ -1,5 +1,6 @@
 package com.test.application.data.models;
 
+import com.test.application.data.enums.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
