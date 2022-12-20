@@ -3,7 +3,6 @@ package com.test.application.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.test.application.data.enums.Role;
 import com.test.application.data.models.Employee;
-import com.test.application.data.models.Project;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
