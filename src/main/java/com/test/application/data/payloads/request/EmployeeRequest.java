@@ -34,7 +34,7 @@ public class EmployeeRequest {
     @NotBlank
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Role department;
+    private Role role;
 
     public String getFirstName() {
         return firstName;
@@ -76,11 +76,11 @@ public class EmployeeRequest {
         this.salary = salary;
     }
 
-    public Role getDepartment() {
-        return department;
+    public Role getRole() {
+        return role;
     }
 
-    public void setDepartment(Role department) {
-        this.department = department;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

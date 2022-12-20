@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         newEmployee.setPhoneNumber(employeeRequest.getPhoneNumber());
         newEmployee.setEmail(employeeRequest.getEmail());
         newEmployee.setSalary(employeeRequest.getSalary());
-        newEmployee.setDepartment(employeeRequest.getDepartment());
+        newEmployee.setRole(employeeRequest.getRole());
         employeeRepository.save(newEmployee);
         return new MessageResponse("New Employee created successfully");
 
@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.get().setPhoneNumber(employeeRequest.getPhoneNumber());
             employee.get().setEmail(employeeRequest.getEmail());
             employee.get().setSalary(employeeRequest.getSalary());
-            employee.get().setDepartment(employeeRequest.getDepartment());
+            employee.get().setRole(employeeRequest.getRole());
             employeeRepository.save(employee.get());
             return employee;
         }
