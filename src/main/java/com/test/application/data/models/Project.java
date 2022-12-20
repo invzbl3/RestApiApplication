@@ -1,15 +1,11 @@
 package com.test.application.data.models;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.test.application.dto.ProjectDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 /**
  * @author invzbl3 on 12/20/2022

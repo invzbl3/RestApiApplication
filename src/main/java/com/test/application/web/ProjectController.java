@@ -42,7 +42,7 @@ public class ProjectController {
     public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
                                                           HttpServletRequest req) throws ErrorHandling {
         logger.info("findAllProjects is calling : " );
-        Long longcompanyId = Long.parseLong(companyId);
+        Long longCompanyId = Long.parseLong(companyId);
         List<Project> projectList = projectService.getAllProjects(longcompanyId);
         logger.info("findAllProjects ProjectList : " +projectList);
 
