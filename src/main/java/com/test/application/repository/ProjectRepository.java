@@ -20,5 +20,5 @@ public interface ProjectRepository {
 
     Optional<Project> findById(Long id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 }
