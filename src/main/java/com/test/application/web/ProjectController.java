@@ -60,7 +60,7 @@ public class ProjectController {
         if (projectList != null && projectList.size() > 0) {
             return projectAdaptor.databaseModelToUiDtoList(projectList);
         } else {
-            throw new ErrorHandling("Project data not present");
+            throw new ErrorHandling("Project data not present.");
         }
     }
 
