@@ -1,10 +1,15 @@
 package com.test.application.service;
 
+import com.test.application.data.models.Project;
+import java.util.List;
+
 /**
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
  */
 public interface ProjectService {
 
+    public List<Project> getAllProjects(Long companyId);
 
+    public Project save(Project project);
 }

@@ -1,5 +1,6 @@
 package com.test.application.web;
 
+import com.test.application.exception.ErrorHandling;
 import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+    @Autowired
+    ProjectService projectService;
 
     /**
      * Logger declaration for knowing the flow of execution for debugging
@@ -43,8 +46,7 @@ public class ProjectController {
 
     @GetMapping(value = "/{companyId}")
     @Operation(summary = "Get list of projects from database based on companyId")
-    public @ResponseBody
-    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
                                      HttpServletRequest req) throws ErrorHandling {
         logger.info("findAllProjects is calling : ");
         Long longCompanyId = Long.parseLong(companyId);
