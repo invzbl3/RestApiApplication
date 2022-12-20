@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.*;
  * @project RestApiApplication
  */
 @Controller
+@RequestMapping("/project")
 public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
 
-    /*
+    /**
      * list of projects
      */
     @GetMapping("/projects")
@@ -34,7 +35,25 @@ public class ProjectController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
-    /*
+    /**
+     * to get List of projects from database based on companyId
+     */
+    @RequestMapping(value="/{companyId}", method = RequestMethod.GET)
+    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+                                                          HttpServletRequest req) throws ErrorHandling {
+        logger.info("findAllProjects is calling : " );
+        Long longcompanyId = Long.parseLong(companyId);
+        List<Project> projectList = projectService.getAllProjects(longcompanyId);
+        logger.info("findAllProjects ProjectList : " +projectList);
+
+        if (projectList != null && projectList.size() > 0)
+            return projectAdaptor.databaseModelToUiDtoList(projectList);
+        else
+            throw new ErrorHandling("Project data not present");
+    }
+
+
+    /**
      * new project
      */
     @PostMapping("/addProject")
@@ -48,7 +67,7 @@ public class ProjectController {
         return new ResponseEntity<>("Add failed.", HttpStatus.OK);
     }
 
-    /*
+    /**
      * updating project
      */
     @PutMapping("/updateProject")
@@ -62,7 +81,7 @@ public class ProjectController {
         return new ResponseEntity<>("Update failed.", HttpStatus.OK);
     }
 
-    /*
+    /**
      * deleting the project
      */
     @DeleteMapping("/project/{id}")
