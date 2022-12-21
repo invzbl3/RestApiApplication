@@ -1,6 +1,8 @@
 package com.test.application.service;
 
 import com.test.application.data.models.Project;
+import com.test.application.dto.ProjectDTO;
+
 import java.util.List;
 
 /**
@@ -12,4 +14,6 @@ public interface ProjectService {
     public List<Project> getAllProjects(Long companyId);
 
     public Project save(Project project);
+
+    List<ProjectDTO> findAllProducts();
 }

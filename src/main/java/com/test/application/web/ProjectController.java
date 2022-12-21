@@ -10,10 +10,6 @@ import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
 import com.test.application.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +27,7 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+
     @Autowired
     ProjectService projectService;
 
@@ -43,10 +40,12 @@ public class ProjectController {
 
     @GetMapping("/projects")
     @Operation(summary = "Get list of all projects")
-    public ResponseEntity<Object> findAllProjects(@RequestBody PageVO pageVo) {
-        Pageable pageable = PageRequest.of(pageVo.getStart(), pageVo.getLength(), Sort.Direction.ASC, "id");
-        Page<Project> page = projectRepository.findAll(pageable);
-        return new ResponseEntity<>(page, HttpStatus.OK);
+    public ResponseEntity<List<ProjectDTO>> findAllProjects() {
+        List<ProjectDTO> projectList = projectService.findAllProducts();
+        if (projectList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(projectList, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{companyId}")
@@ -73,7 +72,7 @@ public class ProjectController {
             projectRepository.save(project);
             return new ResponseEntity<>("Added successfully.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Add failed.", HttpStatus.OK);
+        return new ResponseEntity<>("Add failed.", HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping("/updateProject")
@@ -83,7 +82,7 @@ public class ProjectController {
             projectRepository.save(project);
             return new ResponseEntity<>("Updated successfully.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Update failed.", HttpStatus.OK);
+        return new ResponseEntity<>("Update failed.", HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/project/{id}")
@@ -94,6 +93,6 @@ public class ProjectController {
             projectRepository.deleteById(id);
             return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Delete failed.", HttpStatus.OK);
+        return new ResponseEntity<>("Delete failed.", HttpStatus.BAD_REQUEST);
     }
 }
