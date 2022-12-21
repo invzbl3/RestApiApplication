@@ -41,6 +41,8 @@ public class ProjectController {
     @GetMapping("/projects")
     @Operation(summary = "Get list of all projects")
     public ResponseEntity<List<ProjectDTO>> findAllProjects() {
+        logger.info("findAllProjects() is calling...");
+
         List<ProjectDTO> projectList = projectService.findAllProducts();
         if (projectList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -67,6 +69,7 @@ public class ProjectController {
     @PostMapping("/addProject")
     @Operation(summary = "Add new project")
     public ResponseEntity<Object> addProject(@RequestBody Project project) {
+        logger.info("addProject() is calling...");
 
         if (project != null) {
             projectRepository.save(project);
@@ -78,6 +81,8 @@ public class ProjectController {
     @PutMapping("/updateProject")
     @Operation(summary = "Updating project")
     public ResponseEntity<Object> updateById(@RequestBody Project project) {
+        logger.info("updateById() is calling...");
+
         if (project != null) {
             projectRepository.save(project);
             return new ResponseEntity<>("Updated successfully.", HttpStatus.OK);
@@ -88,6 +93,8 @@ public class ProjectController {
     @DeleteMapping("/project/{id}")
     @Operation(summary = "Deleting project")
     public ResponseEntity<Object> deleteById(@PathVariable("id") Long id) {
+        logger.info("deleteById() is calling...");
+
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
             projectRepository.deleteById(id);
