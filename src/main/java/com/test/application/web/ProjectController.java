@@ -66,7 +66,7 @@ public class ProjectController {
         }
     }
 
-    @PostMapping("/addProject")
+    @PostMapping
     @Operation(summary = "Add new project")
     public ResponseEntity<Object> addProject(@RequestBody Project project) {
         logger.info("addProject() is calling...");
@@ -78,19 +78,19 @@ public class ProjectController {
         return new ResponseEntity<>("Add failed.", HttpStatus.BAD_REQUEST);
     }
 
-    @PutMapping("/updateProject")
+    @PutMapping
     @Operation(summary = "Updating project")
-    public ResponseEntity<Object> updateById(@RequestBody Project project) {
+    public ResponseEntity<ProjectDTO> updateById(@RequestBody Project project) {
         logger.info("updateById() is calling...");
 
         if (project != null) {
             projectRepository.save(project);
-            return new ResponseEntity<>("Updated successfully.", HttpStatus.OK);
+            return new ResponseEntity<ProjectDTO, HttpStatus>("Updated successfully.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Update failed.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<ProjectDTO, HttpStatus>("Update failed.", HttpStatus.BAD_REQUEST);
     }
 
-    @DeleteMapping("/project/{id}")
+    @DeleteMapping
     @Operation(summary = "Deleting project")
     public ResponseEntity<Object> deleteById(@PathVariable("id") Long id) {
         logger.info("deleteById() is calling...");
@@ -98,8 +98,8 @@ public class ProjectController {
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
             projectRepository.deleteById(id);
-            return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
+            return new ResponseEntity<ProjectDTO, HttpStatus>("Successfully deleted.", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Delete failed.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<ProjectDTO, HttpStatus>("Delete failed.", HttpStatus.BAD_REQUEST);
     }
 }
