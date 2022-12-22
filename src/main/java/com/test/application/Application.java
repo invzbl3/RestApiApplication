@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @project RestApiApplication
  */
 @SpringBootApplication
+        (scanBasePackages={"com.test.application", "com.example.application"})
 public class Application {
 
     public static void main(String[] args) {
