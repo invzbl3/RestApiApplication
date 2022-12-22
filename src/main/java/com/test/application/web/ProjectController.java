@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
@@ -103,7 +102,8 @@ public class ProjectController {
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
             projectRepository.deleteById(id);
-            return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
+            ProjectDTO projectDTO = projectAdaptor.databaseModelToUiDto(project.get());
+            return new ResponseEntity<>(projectDTO, HttpStatus.OK);
         }
         return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
