@@ -97,7 +97,7 @@ public class ProjectController {
     @DeleteMapping
     @Operation(summary = "Deleting project")
     public ResponseEntity<ProjectDTO> deleteById(@PathVariable("id") Long id) {
-        logger.info("deleteById() is calling...");
+        logger.info("deleteById() is calling..." + id);
 
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
