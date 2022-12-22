@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
@@ -52,14 +53,15 @@ public class ProjectController {
 
     @GetMapping(value = "/{companyId}")
     @Operation(summary = "Get list of projects from database based on companyId")
-    public @ResponseBody List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
+    public @ResponseBody
+    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
                                      HttpServletRequest req) throws ErrorHandling {
-        logger.info("findAllProjects is calling : ");
+        logger.info("findAllProjects() is calling : ");
         Long longCompanyId = Long.parseLong(companyId);
         List<Project> projectList = projectService.getAllProjects(longCompanyId);
         logger.info("findAllProjects ProjectList : " + projectList);
 
-        if (projectList != null && projectList.size() > 0) {
+        if (projectList != null && !projectList.isEmpty()) {
             return projectAdaptor.databaseModelToUiDtoList(projectList);
         } else {
             throw new ErrorHandling("Project data not present.");
@@ -68,14 +70,16 @@ public class ProjectController {
 
     @PostMapping
     @Operation(summary = "Add new project")
-    public ResponseEntity<Object> addProject(@RequestBody Project project) {
+    public ResponseEntity<ProjectDTO> addProject(@RequestBody Project project) {
         logger.info("addProject() is calling...");
 
         if (project != null) {
-            projectRepository.save(project);
-            return new ResponseEntity<>("Added successfully.", HttpStatus.OK);
+            Project entity = projectRepository.save(project);
+            ProjectDTO projectDTO = projectAdaptor.databaseModelToUiDto(entity);
+            return new ResponseEntity<>(projectDTO, HttpStatus.OK);
+
         }
-        return new ResponseEntity<>("Add failed.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
@@ -84,22 +88,23 @@ public class ProjectController {
         logger.info("updateById() is calling...");
 
         if (project != null) {
-            projectRepository.save(project);
-            return new ResponseEntity<ProjectDTO, HttpStatus>("Updated successfully.", HttpStatus.OK);
+            Project entity = projectRepository.save(project);
+            ProjectDTO projectDTO = projectAdaptor.databaseModelToUiDto(entity);
+            return new ResponseEntity<>(projectDTO, HttpStatus.OK);
         }
-        return new ResponseEntity<ProjectDTO, HttpStatus>("Update failed.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping
     @Operation(summary = "Deleting project")
-    public ResponseEntity<Object> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProjectDTO> deleteById(@PathVariable("id") Long id) {
         logger.info("deleteById() is calling...");
 
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
             projectRepository.deleteById(id);
-            return new ResponseEntity<ProjectDTO, HttpStatus>("Successfully deleted.", HttpStatus.OK);
+            return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
         }
-        return new ResponseEntity<ProjectDTO, HttpStatus>("Delete failed.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
 }
