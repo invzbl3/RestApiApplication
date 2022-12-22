@@ -2,7 +2,9 @@ package com.test.application.service.impl;
 
 import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
+import com.test.application.repository.ProjectRepository;
 import com.test.application.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +15,18 @@ import java.util.List;
  */
 @Service
 public class ProjectServiceImpl implements ProjectService {
+    @Autowired
+    private ProjectRepository projectRepository;
 
+    @Override
+    public List<Project> getAll() {
+        return projectRepository.getAll();
+    }
 
     @Override
     public List<Project> getAllProjects(Long companyId) {
-        return null;
+        return projectRepository.getAll().stream()
+                .filter(project -> project.getId() == id).findAny().orElse(null);
     }
 
     @Override
