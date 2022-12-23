@@ -23,11 +23,6 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectAdaptor projectAdaptor;
 
     @Override
-    public List<Project> getAll() {
-        return projectRepository.findAll();
-    }
-
-    @Override
     public List<Project> getAllProjects(Long projectId) {
         return projectRepository.findAll().stream()
                 .filter(((Project) project -> project.getId() == projectId)).findAny().orElse(null);
