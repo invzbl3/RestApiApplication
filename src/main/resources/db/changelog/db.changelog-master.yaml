@@ -6,3 +6,6 @@ databaseChangeLog:
 name: db.changelog-master.yaml
 environment: testing
 is-enabled: false
+  spring:
+    main:
+      web-application-type: none
