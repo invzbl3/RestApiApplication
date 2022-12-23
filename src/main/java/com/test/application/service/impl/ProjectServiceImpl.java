@@ -8,6 +8,7 @@ import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author invzbl3 on 12/20/2022
@@ -25,7 +26,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> getAllProjects(Long projectId) {
         return projectRepository.findAll().stream()
-                .filter(((Project project) ->  project.getId() == projectId).findAny().orElse(null));
+                .filter(project -> project.getId() == projectId.longValue()).collect(Collectors.toList());
     }
 
     @Override
