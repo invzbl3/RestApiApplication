@@ -1,13 +1,14 @@
 package com.test.application;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author invzbl3 on 12/15/2022
  * @project RestApiApplication
  */
-public class Application extends SpringBootServletInitializer {
+@SpringBootApplication
+public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
