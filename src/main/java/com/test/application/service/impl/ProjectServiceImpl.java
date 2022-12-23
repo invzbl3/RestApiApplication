@@ -4,6 +4,7 @@ import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
 import com.test.application.repository.ProjectRepository;
 import com.test.application.service.ProjectService;
+import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private ProjectAdaptor projectAdaptor;
 
     @Override
     public List<Project> getAll() {
@@ -36,6 +40,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectDTO> findAllProducts() {
-        return null;
+        List<Project> project = projectRepository.findAll();
+        return projectAdaptor.databaseModelToUiDtoList(project);
     }
 }
