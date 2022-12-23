@@ -15,6 +15,4 @@ import java.util.Optional;
  * @project RestApiApplication
  */
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Long> {
-    Collection<Object> getAll();
-}
+public interface ProjectRepository extends JpaRepository<Project, Long> { }
