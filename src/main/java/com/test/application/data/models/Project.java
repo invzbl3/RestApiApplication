@@ -2,7 +2,6 @@ package com.test.application.data.models;
 
 import com.test.application.dto.ProjectDTO;
 import lombok.*;
-
 import javax.persistence.*;
 
 /**
