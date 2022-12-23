@@ -43,7 +43,7 @@ public class ProjectController {
     public ResponseEntity<List<ProjectDTO>> findAllProjects() {
         logger.info("findAllProjects() is calling...");
 
-        List<ProjectDTO> projectList = projectService.findAllProducts();
+        List<ProjectDTO> projectList = projectService.findAllProjects();
         if (projectList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

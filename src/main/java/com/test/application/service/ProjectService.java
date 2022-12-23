@@ -15,5 +15,5 @@ public interface ProjectService {
 
     public Project save(Project project);
 
-    List<ProjectDTO> findAllProducts();
+    List<ProjectDTO> findAllProjects();
 }

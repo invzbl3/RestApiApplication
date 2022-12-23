@@ -37,7 +37,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDTO> findAllProducts() {
+    public List<ProjectDTO> findAllProjects() {
         List<Project> project = projectRepository.findAll();
         return projectAdaptor.databaseModelToUiDtoList(project);
     }
