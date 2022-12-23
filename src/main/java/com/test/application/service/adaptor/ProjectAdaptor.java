@@ -2,6 +2,7 @@ package com.test.application.service.adaptor;
 
 import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
  */
+@Component
 public class ProjectAdaptor implements Adaptor<ProjectDTO, Project> {
 
     @Override
