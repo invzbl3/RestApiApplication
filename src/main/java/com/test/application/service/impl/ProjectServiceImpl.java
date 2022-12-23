@@ -26,7 +26,8 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> getAllProjects(Long projectId) {
         return projectRepository.findAll().stream()
-                .filter(project -> project.getId() == projectId.longValue()).collect(Collectors.toList());
+                .filter(project -> project.getId() == projectId.longValue())
+                .collect(Collectors.toList());
     }
 
     @Override
