@@ -26,8 +26,8 @@ import java.util.Optional;
  * http://localhost:8080/api/project/all
  * http://localhost:8080/api/project/{projectId}
  * http://localhost:8080/api/project/ ADD
- * http://localhost:8080/api/project/ UPDATE
- * http://localhost:8080/api/project/ DELETE
+ * http://localhost:8080/api/project/update/{id} UPDATE
+ * http://localhost:8080/api/project/delete/{id} DELETE
  *
  * Example of the structure:
  *
@@ -129,7 +129,7 @@ public class ProjectController {
      *       "customer": "Test2"
      *  }
      */
-    @PutMapping
+    @PutMapping("/update/{id}")
     @Operation(summary = "Updating project")
     public ResponseEntity<ProjectDTO> updateById(@RequestBody Project project) {
         logger.info("updateById() is calling...");
@@ -142,7 +142,16 @@ public class ProjectController {
         return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
 
-    @DeleteMapping
+    /**
+     * Reminder instruction for testing:
+     *
+     * how to delete project step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose "raw" + JSON as a type of deleting
+     * 3. Choose DELETE in dropdown
+     */
+    @DeleteMapping("/delete/{id}")
     @Operation(summary = "Deleting project")
     public ResponseEntity<ProjectDTO> deleteById(@PathVariable("id") Long id) {
         logger.info("deleteById() is calling..." + id);
