@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public MessageResponse createEmployee(EmployeeRequest employeeRequest) {
         Employee newEmployee = new Employee();
         newEmployee.setFirstName(employeeRequest.getFirstName());
-        newEmployee.setLastname(employeeRequest.getLastname());
+        newEmployee.setLastName(employeeRequest.getLastname());
         newEmployee.setPhoneNumber(employeeRequest.getPhoneNumber());
         newEmployee.setEmail(employeeRequest.getEmail());
         newEmployee.setSalary(employeeRequest.getSalary());
@@ -44,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new ResourceNotFoundException("Employee", "id", employeeId);
         } else {
             employee.get().setFirstName(employeeRequest.getFirstName());
-            employee.get().setLastname(employeeRequest.getLastname());
+            employee.get().setLastName(employeeRequest.getLastname());
             employee.get().setPhoneNumber(employeeRequest.getPhoneNumber());
             employee.get().setEmail(employeeRequest.getEmail());
             employee.get().setSalary(employeeRequest.getSalary());
