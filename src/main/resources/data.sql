@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Table: Employees                                             */
 /*==============================================================*/
-insert into Employees (first_name, last_name, phone_number, email, salary, role, password, username)
+insert into Employees (firstName, lastName, phoneNumber, email, salary, role, password, username)
 values (1, 'Christiano', 'Ronaldo', '+421905123456', 'test@gmail.com', 50000.00, 'TEAM_LEADER', 'testPassword', 'C7'),
        (2, 'John', 'Smith', '+421905123480', 'test2@gmail.com', 40000.00, 'PM', 'testPassword2', 'Jo'),
        (3, 'Michael', 'Jackson', '+421905123400', 'test3@gmail.com', 30000.00, 'DEVELOPER', 'testPassword3', 'Mike'),

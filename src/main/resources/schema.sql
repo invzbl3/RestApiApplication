@@ -9,7 +9,7 @@ create table projects
 (
     name          varchar(100) not null,
     abbreviation  varchar(100) not null,
-    customer      varchar(100) not null,
+    customer      varchar(100) not null
 ) CHARACTER SET utf8;
 
 /*==============================================================*/
@@ -24,5 +24,5 @@ create table employees
     salary      double       not null,
     role        varchar(100) not null,
     password    varchar(100) not null,
-    username    varchar(100) not null,
+    username    varchar(100) not null
 ) CHARACTER SET utf8;
