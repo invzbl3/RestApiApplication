@@ -24,7 +24,7 @@ import java.util.Optional;
  * Browser links for testing purposes:
  *
  * http://localhost:8080/api/project/all
- * http://localhost:8080/api/project/{companyId}
+ * http://localhost:8080/api/project/{projectId}
  * http://localhost:8080/api/project/ ADD
  * http://localhost:8080/api/project/ UPDATE
  * http://localhost:8080/api/project/ DELETE
