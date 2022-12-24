@@ -126,6 +126,16 @@ public class EmployeeController {
         return employeeService.updateEmployee(id, employee);
     }
 
+    /**
+     * Reminder instruction for testing:
+     *
+     * how to delete new entity step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose DELETE in dropdown
+     * 3. Check if you have the correct admin role in "Authorization" section
+     *
+     */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Integer id) {
         employeeService.deleteEmployee(id);
