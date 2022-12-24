@@ -22,7 +22,7 @@ import java.util.Optional;
  * @project RestApiApplication
  */
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/api/project")
 public class ProjectController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class ProjectController {
      */
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
-    @GetMapping("/projects")
+    @GetMapping("/all")
     @Operation(summary = "Get list of all projects")
     public ResponseEntity<List<ProjectDTO>> findAllProjects() {
         logger.info("findAllProjects() is calling...");
