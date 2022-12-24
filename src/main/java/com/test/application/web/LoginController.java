@@ -25,7 +25,7 @@ public class LoginController {
     @GetMapping("/welcomePage")
     public ModelAndView welcomePage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("welcomePage");
+        model.setViewName("welcomePage.jsp");
         return model;
     }
 
@@ -36,7 +36,7 @@ public class LoginController {
     @GetMapping("/homePage")
     public ModelAndView homePage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("homePage");
+        model.setViewName("homePage.jsp");
         return model;
     }
 
@@ -46,7 +46,7 @@ public class LoginController {
     @GetMapping("/userPage")
     public ModelAndView userPage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("userPage");
+        model.setViewName("userPage.jsp");
         return model;
     }
 
@@ -57,14 +57,14 @@ public class LoginController {
     @GetMapping("/adminPage")
     public ModelAndView adminPage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("adminPage");
+        model.setViewName("adminPage.jsp");
         return model;
     }
 
     @GetMapping("/profilePage")
     public ModelAndView profilePage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("profilePage");
+        model.setViewName("profilePage.jsp");
         return model;
     }
 
@@ -81,7 +81,7 @@ public class LoginController {
             model.addObject("message", "Logged out from successfully.");
         }
 
-        model.setViewName("loginPage");
+        model.setViewName("loginPage.jsp");
         return model;
     }
 }
