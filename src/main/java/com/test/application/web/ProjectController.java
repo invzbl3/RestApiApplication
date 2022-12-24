@@ -113,6 +113,22 @@ public class ProjectController {
         return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Reminder instruction for testing:
+     *
+     * how to update project step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose "raw" + JSON as a type of updating
+     * 3. Choose PUT in dropdown
+     * 4. Insert in the body the following entry as for testing:
+     *
+     *  {
+     *       "name": "Test2",
+     *       "abbreviation": "Test2",
+     *       "customer": "Test2"
+     *  }
+     */
     @PutMapping
     @Operation(summary = "Updating project")
     public ResponseEntity<ProjectDTO> updateById(@RequestBody Project project) {
