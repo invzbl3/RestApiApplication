@@ -22,7 +22,7 @@ import java.util.List;
 @Table(name = "employees")
 public class Employee implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @JsonProperty("first_name")
