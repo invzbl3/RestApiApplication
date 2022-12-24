@@ -79,6 +79,7 @@ public class EmployeeController {
      * 3. Choose POST in dropdown
      * 4. Insert in the body the following entry as for testing:
      * 5. Check if you have the correct admin role in "Authorization" section
+     *
      * {
      *   "firstName": "Test",
      *   "lastName": "Test2",
