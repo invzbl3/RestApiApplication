@@ -124,6 +124,7 @@ public class ProjectController {
      * 4. Insert in the body the following entry as for testing:
      *
      *  {
+     *       "id": "4",
      *       "name": "Test2",
      *       "abbreviation": "Test2",
      *       "customer": "Test2"
