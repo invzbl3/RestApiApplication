@@ -24,8 +24,11 @@ public class Employee implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String firstName;
+
     private String lastName;
+
     private String phoneNumber;
     private String email;
     private double salary;
