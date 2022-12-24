@@ -20,6 +20,14 @@ import java.util.Optional;
 /**
  * @author invzbl3 on 12/20/2022
  * @project RestApiApplication
+ *
+ * Browser links for testing purposes:
+ *
+ * http://localhost:8080/api/project/all
+ * http://localhost:8080/api/project/{companyId}
+ * http://localhost:8080/api/project/ ADD
+ * http://localhost:8080/api/project/ UPDATE
+ * http://localhost:8080/api/project/ DELETE
  */
 @RestController
 @RequestMapping("/api/project")
