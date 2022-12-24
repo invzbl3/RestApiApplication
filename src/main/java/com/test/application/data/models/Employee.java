@@ -15,9 +15,10 @@ import java.util.List;
  * @project RestApiApplication
  */
 @Data
-@Entity
 @ToString
 @EqualsAndHashCode
+@Entity(name = "employee_entity")
+@Table(name = "employees")
 public class Employee implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
