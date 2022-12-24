@@ -98,7 +98,29 @@ public class EmployeeController {
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
 
-
+    /**
+     * Reminder instruction for testing:
+     *
+     * how to update new entity step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose "raw" + JSON as a type of updating
+     * 3. Choose PUT in dropdown
+     * 4. Insert in the body the following entry as for testing:
+     * 5. Check if you have the correct admin role in "Authorization" section
+     *
+     * {
+     *   "firstName": "Test",
+     *   "lastName": "Test2",
+     *   "phoneNumber": "+4219051234532",
+     *   "email": "test100@gmail.com",
+     *   "salary": 500000.00,
+     *   "role": "TEAM_LEADER",
+     *   "password": "testPassword",
+     *   "username": "C9"
+     *  }
+     *
+     */
     @PutMapping("/update/{id}")
     public Optional<Employee> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeRequest employee) {
         return employeeService.updateEmployee(id, employee);
