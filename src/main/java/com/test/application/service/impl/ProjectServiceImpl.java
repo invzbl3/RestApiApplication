@@ -8,7 +8,6 @@ import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -27,7 +26,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> getAllProjects(Long companyId) {
         return projectRepository.findAll().stream()
-                .filter(project -> Objects.equals(project.getId(), companyId))
+                .filter(project -> project.getId().equals(companyId))
                 .collect(Collectors.toList());
     }
 

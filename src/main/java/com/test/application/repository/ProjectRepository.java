@@ -15,4 +15,7 @@ import java.util.Optional;
  * @project RestApiApplication
  */
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Long> { }
+public interface ProjectRepository extends JpaRepository<Project, Long> {
+
+    findByCompanyId();
+}
