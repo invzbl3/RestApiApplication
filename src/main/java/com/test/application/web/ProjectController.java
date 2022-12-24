@@ -83,6 +83,22 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Reminder instruction for testing:
+     *
+     * how to add project step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose "raw" + JSON as a type of inserting
+     * 3. Choose POST in dropdown
+     * 4. Insert in the body the following entry as for testing:
+     *
+     *  {
+     *       "name": "Test",
+     *       "abbreviation": "Test",
+     *       "customer": "Test"
+     *  }
+     */
     @PostMapping
     @Operation(summary = "Add new project")
     public ResponseEntity<ProjectDTO> addProject(@RequestBody Project project) {

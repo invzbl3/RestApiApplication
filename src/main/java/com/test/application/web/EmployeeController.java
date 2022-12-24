@@ -72,7 +72,7 @@ public class EmployeeController {
     /**
      * Reminder instruction for testing:
      *
-     * how to add new entity step by step using Postman:
+     * how to add employee step by step using Postman:
      *
      * 1. Choose the section "Body" in the Postman app
      * 2. Choose "raw" + JSON as a type of inserting
