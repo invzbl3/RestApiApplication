@@ -69,6 +69,28 @@ public class EmployeeController {
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
+    /*
+     * Reminder instruction for testing:
+     *
+     * how to add new entity step by step using Postman:
+     *
+     * 1. Choose the section "Body" in the Postman app
+     * 2. Choose "raw" + JSON as a type of inserting
+     * 3. Choose POST in dropdown
+     * 4. Insert in the body the following entry as for testing:
+     *
+     * {
+     *   "firstName": "Test",
+     *   "lastName": "Test2",
+     *   "phoneNumber": "+4219051234532",
+     *   "email": "test100@gmail.com",
+     *   "salary": 500000.00,
+     *   "role": "TEAM_LEADER",
+     *   "password": "testPassword",
+     *   "username": "C9"
+     *  }
+     *
+     */
     @PostMapping("/add")
     public ResponseEntity<MessageResponse> addEmployee(@RequestBody EmployeeRequest employee) {
         MessageResponse newEmployee = employeeService.createEmployee(employee);
