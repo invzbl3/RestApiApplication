@@ -69,7 +69,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
-    /*
+    /**
      * Reminder instruction for testing:
      *
      * how to add new entity step by step using Postman:
@@ -97,6 +97,7 @@ public class EmployeeController {
         MessageResponse newEmployee = employeeService.createEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/update/{id}")
     public Optional<Employee> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeRequest employee) {
