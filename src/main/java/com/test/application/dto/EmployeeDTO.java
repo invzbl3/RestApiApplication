@@ -25,7 +25,7 @@ public class EmployeeDTO implements Serializable {
 
     public EmployeeDTO(Employee employee) {
         this.firstName = employee.getFirstName();
-        this.lastname = employee.getLastname();
+        this.lastname = employee.getLastName();
         this.phoneNumber = employee.getPhoneNumber();
         this.email = employee.getEmail();
         this.salary = employee.getSalary();
