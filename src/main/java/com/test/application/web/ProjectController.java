@@ -28,6 +28,14 @@ import java.util.Optional;
  * http://localhost:8080/api/project/ ADD
  * http://localhost:8080/api/project/ UPDATE
  * http://localhost:8080/api/project/ DELETE
+ *
+ * Example of the structure:
+ *
+ * {
+ *      "name": "Dokazovi"
+ *      "abbreviation": "DKZ"
+ *      "customer": "SoftServe"
+ * }
  */
 @RestController
 @RequestMapping("/api/project")

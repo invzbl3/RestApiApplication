@@ -25,6 +25,19 @@ import java.util.Optional;
  * http://localhost:8080/api/employee/add
  * http://localhost:8080/api/employee/update/{id}
  * http://localhost:8080/api/employee/delete/{id}
+ *
+ * Example of the structure:
+ *
+ * {
+ *     "firstName": "Christiano",
+ *     "lastName": "Ronaldo",
+ *     "phoneNumber": "+421905123456",
+ *     "email": "test@gmail.com",
+ *     "salary": 50000.00,
+ *     "role": "TEAM_LEADER",
+ *     "password": "testPassword",
+ *     "username": "C7"
+ * }
  */
 @Data
 @AllArgsConstructor
