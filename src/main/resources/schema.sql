@@ -18,7 +18,7 @@ create table projects
 create table employees
 (
     firstName   varchar(100) not null,
-    last_name   varchar(100) not null,
+    lastName    varchar(100) not null,
     phoneNumber varchar(100) not null,
     email       varchar(100) not null,
     salary      double       not null,
