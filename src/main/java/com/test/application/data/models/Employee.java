@@ -1,5 +1,6 @@
 package com.test.application.data.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.application.data.enums.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,11 +24,8 @@ public class Employee implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @JsonProperty("first_name")
     private String firstName;
-    @JsonProperty("last_name")
     private String lastName;
-    @JsonProperty("phone_number")
     private String phoneNumber;
     private String email;
     private double salary;
