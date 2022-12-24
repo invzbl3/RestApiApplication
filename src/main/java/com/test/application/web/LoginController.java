@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
  * http://localhost:8080/api/page/userPage
  * http://localhost:8080/api/page/adminPage
  * http://localhost:8080/api/page/loginPage
+ * http://localhost:8080/api/page/profilePage
+ *
  */
 @Controller
 @RequestMapping("/api/page")
@@ -56,6 +58,13 @@ public class LoginController {
     public ModelAndView adminPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("adminPage");
+        return model;
+    }
+
+    @GetMapping("/profilePage")
+    public ModelAndView profilePage() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("profilePage");
         return model;
     }
 
