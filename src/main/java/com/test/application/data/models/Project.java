@@ -35,4 +35,7 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProjectCategory category;
 }
