@@ -24,8 +24,9 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectAdaptor projectAdaptor;
 
     @Override
-    public List<Project> getAllProjects() {
-        return projectRepository.findByCompanyId();
+    public List<ProjectDTO> getAllProjects() {
+        List<Project> project = projectRepository.findByCompanyId();
+        return projectAdaptor.databaseModelToUiDtoList(project);
     }
 
     @Override
