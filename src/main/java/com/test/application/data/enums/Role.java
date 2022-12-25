@@ -9,5 +9,7 @@ public enum Role {
     PM,
     DEVELOPER,
     SCIENTIST,
-    ENGINEER
+    ENGINEER,
+    ADMIN,
+    CLIENT
 }
