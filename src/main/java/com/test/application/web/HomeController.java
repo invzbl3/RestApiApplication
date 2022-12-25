@@ -1,13 +1,15 @@
 package com.test.application.web;
 
+import com.test.application.data.models.Project;
+import com.test.application.data.models.ProjectCategory;
+import com.test.application.service.ProjectCategoryService;
 import com.test.application.service.ProjectService;
+import com.test.application.service.impl.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +23,9 @@ public class HomeController {
     ProjectService projectService;
 
     @Autowired
+    ProjectServiceImpl projectServiceImpl;
+
+    @Autowired
     ProjectCategoryService categoryService;
 
     @GetMapping("/")
@@ -32,12 +37,12 @@ public class HomeController {
     public ModelAndView customerHome(
             @RequestParam("categoryId") Optional<Long> categoryId
     ) {
-        List<Project> pList = new ArrayList<Project>();
+        List<Project> pList;
         List<ProjectCategory> pcList = categoryService.get();
         if (categoryId.isPresent()) {
-            pList = projectService.findByCategoryId(categoryId.get());
+            pList = projectServiceImpl.findByCategoryId(categoryId.get());
         } else {
-            pList = projectService.get();
+            pList = projectService.findAllProjects();
         }
         ModelAndView modelAndView = new ModelAndView("customer/home");
         modelAndView.addObject("pList", pList);

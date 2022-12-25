@@ -2,6 +2,7 @@ package com.test.application.service.impl;
 
 import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
+import com.test.application.repository.CategoryRepository;
 import com.test.application.repository.ProjectRepository;
 import com.test.application.service.ProjectService;
 import com.test.application.service.adaptor.ProjectAdaptor;
@@ -19,6 +20,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private ProjectAdaptor projectAdaptor;
@@ -41,6 +45,6 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     public List<Project> findByCategoryId(Long categoryId) {
-        return projectRepository.findByCategoryId(categoryId);
+        return categoryRepository.findByCategoryId(categoryId);
     }
 }

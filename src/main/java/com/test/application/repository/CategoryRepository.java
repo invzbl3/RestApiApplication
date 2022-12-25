@@ -10,7 +10,7 @@ import java.util.List;
  * @author invzbl3 on 12/25/2022
  * @project RestApiApplication
  */
-public interface CategoryRepository extends CrudRepository<ProjectRepository, Long> {
+public interface CategoryRepository extends CrudRepository<Project, Long> {
 
     // find by category id
     @Query("SELECT p FROM Project p WHERE p.category.id = :categoryId")
