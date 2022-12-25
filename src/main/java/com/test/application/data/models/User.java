@@ -1,7 +1,6 @@
 package com.test.application.data.models;
 
 import com.test.application.data.enums.Role;
-import com.test.application.dto.ProjectDTO;
 import com.test.application.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
