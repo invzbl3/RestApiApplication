@@ -27,7 +27,7 @@ import java.util.Set;
 public class User {
 
     public User(UserDTO userDTO) {
-        this.name = userDTO.getFirstName();
+        this.name = userDTO.getName();
         this.email = userDTO.getEmail();
         this.password = userDTO.getPassword();
         this.role = userDTO.getRole();

@@ -24,27 +24,18 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 public class UserDTO implements Serializable {
 
     public UserDTO(User user) {
-        this.firstName = user.getName();
-        this.lastName = user.getEmail();
-        this.phoneNumber = user.getPassword();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
         this.email = user.getEmail();
         this.role = user.getRole();
     }
 
-    private String firstName;
-
-    private String lastName;
-
-    private String phoneNumber;
+    private String name;
 
     private String email;
 
-    private double salary;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
     private String password;
 
-    private String username;
+    private Role role;
 }
