@@ -1,5 +1,5 @@
 /*==============================================================*/
-/* Table: Users                                             */
+/* Table: Users                                                 */
 /*==============================================================*/
 INSERT INTO Users (id, email, password, name, role)
 values (1, 'admin@gmail.com', '...', 'Admin', 'ROLE_ADMIN'),
