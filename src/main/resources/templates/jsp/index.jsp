@@ -5,7 +5,7 @@
     <%@include file="/includes/head.jsp"%>
     <style type="text/css">
         body {
-            background-color: #333;
+            background-color: rgba(26, 35, 115, 0.47);
             color: #fff;
         }
     </style>
