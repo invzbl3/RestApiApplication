@@ -43,7 +43,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projectAdaptor.databaseModelToUiDtoList(project);
     }
 
-    public List<Project> findByCategoryId(Long categoryId) {
+    public List<ProjectDTO> findByCategoryId(Long categoryId) {
         return categoryRepository.findByCategoryId(categoryId);
     }
 }

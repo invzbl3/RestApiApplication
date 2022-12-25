@@ -4,7 +4,6 @@ import com.test.application.data.models.ProjectCategory;
 import com.test.application.data.repository.ProjectCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +32,4 @@ public class ProjectCategoryService {
     public Optional<ProjectCategory> findById(Long id) {
         return projectCategoryRepository.findById(id);
     }
-
 }
