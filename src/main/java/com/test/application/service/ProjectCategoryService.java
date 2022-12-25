@@ -1,5 +1,6 @@
 package com.test.application.service;
 
+import com.test.application.data.models.ProjectCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,22 +15,22 @@ import java.util.Optional;
 public class ProjectCategoryService {
 
     @Autowired
-    ProjectCategoryRepository pcr;
+    ProjectCategoryRepository projectCategoryRepository;
 
     public void save(ProjectCategory productCategory) {
-        pcr.save(productCategory);
+        projectCategoryRepository.save(productCategory);
     }
 
     public void delete(Long id){
-        pcr.deleteById(id);
+        projectCategoryRepository.deleteById(id);
     }
 
     public List<ProjectCategory> get(){
-        return (List<ProjectCategory>) pcr.findAll();
+        return (List<ProjectCategory>) projectCategoryRepository.findAll();
     }
 
     public Optional<ProjectCategory> findById(Long id) {
-        return pcr.findById(id);
+        return projectCategoryRepository.findById(id);
     }
 
 }
