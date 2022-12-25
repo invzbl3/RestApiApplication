@@ -39,4 +39,8 @@ public class ProjectServiceImpl implements ProjectService {
         List<Project> project = projectRepository.findAll();
         return projectAdaptor.databaseModelToUiDtoList(project);
     }
+
+    public List<Project> findByCategoryId(Long categoryId) {
+        return projectRepository.findByCategoryId(categoryId);
+    }
 }
