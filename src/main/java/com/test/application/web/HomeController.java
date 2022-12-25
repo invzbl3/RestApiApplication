@@ -2,6 +2,7 @@ package com.test.application.web;
 
 import com.test.application.data.models.Project;
 import com.test.application.data.models.ProjectCategory;
+import com.test.application.dto.ProjectDTO;
 import com.test.application.service.ProjectCategoryService;
 import com.test.application.service.ProjectService;
 import com.test.application.service.impl.ProjectServiceImpl;
@@ -37,7 +38,7 @@ public class HomeController {
     public ModelAndView customerHome(
             @RequestParam("categoryId") Optional<Long> categoryId
     ) {
-        List<Project> pList;
+        List<ProjectDTO> pList;
         List<ProjectCategory> pcList = categoryService.get();
         if (categoryId.isPresent()) {
             pList = projectServiceImpl.findByCategoryId(categoryId.get());

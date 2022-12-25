@@ -9,7 +9,6 @@ import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author invzbl3 on 12/20/2022
