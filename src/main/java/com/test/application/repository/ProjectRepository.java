@@ -17,5 +17,5 @@ import java.util.Optional;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    public List<Project> findByCompanyId();
+    public List<Project> findAllByCompanyId(Long companyId);
 }
