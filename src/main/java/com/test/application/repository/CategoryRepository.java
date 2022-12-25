@@ -14,6 +14,6 @@ import java.util.List;
 public interface CategoryRepository extends CrudRepository<Project, Long> {
 
     // find by category id
-    @Query("SELECT p FROM Project p WHERE p.category.id = :categoryId")
+    @Query("SELECT p FROM project_entity p WHERE p.category.id = :categoryId")
     public List<ProjectDTO> findByCategoryId(@Param("categoryId") Long categoryId);
 }
