@@ -14,10 +14,10 @@
 <%@include file="/includes/header.jsp"%>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
-        <h1 class="cover-heading">WELCOME</h1>
-        <h1 class="cover-heading">TO</h1>
-        <h1 class="cover-heading">PRODUCT MANAGEMENT</h1>
-        <h1 class="cover-heading">SYSTEM</h1>
+        <h1 class="cover-heading">Welcome</h1>
+        <h1 class="cover-heading">to</h1>
+        <h1 class="cover-heading">Project Management</h1>
+        <h1 class="cover-heading">System</h1>
     </main></div>
 <%@include file="/includes/footer.jsp"%>
 </body>
