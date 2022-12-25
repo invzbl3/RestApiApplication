@@ -1,6 +1,7 @@
 package com.test.application.service;
 
 import com.test.application.data.models.ProjectCategory;
+import com.test.application.data.repository.ProjectCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
