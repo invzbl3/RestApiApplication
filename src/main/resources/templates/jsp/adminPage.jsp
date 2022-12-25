@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core"%>
 <h3>Admin Page</h3>
 
 <c:url value="/logout" var="logoutUrl" />
