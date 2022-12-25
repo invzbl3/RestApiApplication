@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Table: Users                                                 */
 /*==============================================================*/
-INSERT INTO Users (id, email, password, name, role)
+insert into Users (id, email, password, name, role)
 values (1, 'admin@gmail.com', '...', 'Admin', 'ROLE_ADMIN'),
        (2, 'customer@gmail.com', '...', 'User', 'ROLE_CUSTOMER');
 
