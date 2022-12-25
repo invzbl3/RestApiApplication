@@ -1,6 +1,5 @@
 package com.test.application.web;
 
-import com.test.application.data.models.Project;
 import com.test.application.data.models.ProjectCategory;
 import com.test.application.dto.ProjectDTO;
 import com.test.application.service.ProjectCategoryService;

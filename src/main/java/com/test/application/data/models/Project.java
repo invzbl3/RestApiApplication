@@ -38,4 +38,6 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private ProjectCategory category;
+
+    private Long companyId;
 }
