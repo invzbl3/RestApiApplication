@@ -1,12 +1,10 @@
-<%@ page contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Sign Up Form</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet"
@@ -53,9 +51,7 @@
                 </div>
                 <div class="signup-image">
                     <figure>
-                        <img src="login_template/images/signup-image.jpg"
-                             alt="sing up image">
-                        <a href="homePage" class="signup-image-link">Back to home</a>
+                        <a href="homePage" class="signup">Back to home</a>
                     </figure>
                 </div>
             </div>
@@ -67,5 +63,4 @@
 <script src="login_template/vendor/jquery/jquery.min.js"></script>
 <script src="login_template/js/main.js"></script>
 </body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
