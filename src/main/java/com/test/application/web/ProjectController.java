@@ -66,7 +66,7 @@ public class ProjectController {
         return new ResponseEntity<>(projectList, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{companyId}")
+    @GetMapping(value = "/findByCompanyId")
     @Operation(summary = "Get list of projects from database based on companyId")
     public @ResponseBody
     List<ProjectDTO> findAllProjects(HttpServletRequest req) throws ErrorHandling {
