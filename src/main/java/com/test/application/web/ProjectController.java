@@ -69,15 +69,13 @@ public class ProjectController {
     @GetMapping(value = "/{companyId}")
     @Operation(summary = "Get list of projects from database based on companyId")
     public @ResponseBody
-    List<ProjectDTO> findAllProjects(@PathVariable("companyId") String companyId,
-                                     HttpServletRequest req) throws ErrorHandling {
+    List<ProjectDTO> findAllProjects(HttpServletRequest req) throws ErrorHandling {
         logger.info("findAllProjects() is calling : ");
-        Long longCompanyId = Long.parseLong(companyId);
-        List<Project> projectList = projectService.getAllProjects(longCompanyId);
+        List<ProjectDTO> projectList = projectService.getAllProjects();
         logger.info("findAllProjects ProjectList : " + projectList);
 
         if (projectList != null && !projectList.isEmpty()) {
-            return projectAdaptor.databaseModelToUiDtoList(projectList);
+            return projectList;
         } else {
             throw new ErrorHandling("Project data not present.");
         }

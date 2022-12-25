@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface ProjectService {
 
-    public List<Project> getAllProjects(Long companyId);
+    public List<ProjectDTO> getAllProjects();
 
     public Project save(Project project);
 
