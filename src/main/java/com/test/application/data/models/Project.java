@@ -32,4 +32,7 @@ public class Project {
     private String abbreviation;
 
     private String customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }
