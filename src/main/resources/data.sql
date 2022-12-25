@@ -1,4 +1,11 @@
 /*==============================================================*/
+/* Table: Users                                             */
+/*==============================================================*/
+INSERT INTO Users (id, email, password, name, role)
+values (1, 'admin@gmail.com', '...', 'Admin', 'ROLE_ADMIN'),
+       (2, 'customer@gmail.com', '...', 'User', 'ROLE_CUSTOMER');
+
+/*==============================================================*/
 /* Table: Employees                                             */
 /*==============================================================*/
 insert into Employees (first_name, last_name, phone_number, email, salary, role, password, username)

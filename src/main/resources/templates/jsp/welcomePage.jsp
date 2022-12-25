@@ -1,4 +1,4 @@
-<h3>Welcome Page</h3>
+<h3>Welcome to the ProjectManagement System</h3>
 
 <a href="loginPage">login</a>|
 <a href="logoutPage">logout</a>|
