@@ -1,6 +1,7 @@
 package com.test.application.web;
 
 import com.test.application.data.models.User;
+import com.test.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    /**
-     * This Get api is responsible to view User List
-     * @return ModelAndView
-     */
     @GetMapping("/admin/user/list")
     public ModelAndView list() {
         List<User> uList = userService.get();
