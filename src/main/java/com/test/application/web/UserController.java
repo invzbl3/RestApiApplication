@@ -20,9 +20,9 @@ public class UserController {
 
     @GetMapping("/admin/user/list")
     public ModelAndView list() {
-        List<User> uList = userService.get();
+        List<User> userList = userService.get();
         ModelAndView modelAndView = new ModelAndView("/admin/user/list");
-        modelAndView.addObject("uList", uList);
+        modelAndView.addObject("userList", userList);
         return modelAndView;
     }
 }
