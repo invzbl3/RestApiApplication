@@ -20,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @project RestApiApplication
  */
 @Configuration
-@EnableWebMvc
 @ComponentScan
 @EnableWebSecurity
 @Order(1000)
