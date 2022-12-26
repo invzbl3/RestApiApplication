@@ -2,8 +2,8 @@ package com.test.application.service.impl;
 
 import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
-import com.test.application.repository.CategoryRepository;
-import com.test.application.repository.ProjectRepository;
+import com.test.application.data.repository.CategoryRepository;
+import com.test.application.data.repository.ProjectRepository;
 import com.test.application.service.ProjectService;
 import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;

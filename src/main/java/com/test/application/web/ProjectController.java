@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
-import com.test.application.repository.ProjectRepository;
+import com.test.application.data.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

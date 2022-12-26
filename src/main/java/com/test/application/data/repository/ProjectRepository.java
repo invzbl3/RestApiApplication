@@ -1,4 +1,4 @@
-package com.test.application.repository;
+package com.test.application.data.repository;
 
 import com.test.application.data.models.Project;
 import org.springframework.data.jpa.repository.JpaRepository;

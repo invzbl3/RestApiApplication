@@ -37,16 +37,16 @@ public class HomeController {
     public ModelAndView customerHome(
             @RequestParam("categoryId") Optional<Long> categoryId
     ) {
-        List<ProjectDTO> pList;
-        List<ProjectCategory> pcList = categoryService.get();
+        List<ProjectDTO> projectList;
+        List<ProjectCategory> projectCategoryList = categoryService.get();
         if (categoryId.isPresent()) {
-            pList = projectServiceImpl.findByCategoryId(categoryId.get());
+            projectList = projectServiceImpl.findByCategoryId(categoryId.get());
         } else {
-            pList = projectService.findAllProjects();
+            projectList = projectService.findAllProjects();
         }
         ModelAndView modelAndView = new ModelAndView("customer/home");
-        modelAndView.addObject("pList", pList);
-        modelAndView.addObject("pcList", pcList);
+        modelAndView.addObject("projectList", projectList);
+        modelAndView.addObject("projectCategoryList", projectCategoryList);
         modelAndView.addObject("categoryId", categoryId);
         return modelAndView;
     }
