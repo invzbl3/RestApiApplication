@@ -67,7 +67,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Integer employeeId) throws ResourceNotFoundException {
-        if (employeeRepository.getReferenceById(employeeId).getId().equals(employeeId)) {
+        if (employeeRepository.findById(employeeId).equals(employeeId)) {
             employeeRepository.deleteById(employeeId);
         } else throw new ResourceNotFoundException("Employee", "id", employeeId);
     }
