@@ -2,8 +2,8 @@
 /* Table: Users                                                 */
 /*==============================================================*/
 insert into Users (id, email, password, name, role)
-values (1, 'admin@gmail.com', '...', 'Admin', 'ROLE_ADMIN'),
-       (2, 'customer@gmail.com', '...', 'User', 'ROLE_CUSTOMER');
+values (1, 'admin@gmail.com', '$2a$10$UmWLmkuKtuM0KqLYlBM1OOF4k2rFCFbbA21NHFeBmwiQNcdyM9tTq', 'Admin', 'ROLE_ADMIN'),
+       (2, 'customer@gmail.com', '$2a$10$TjcHepiRNF29zeh0jINfBeVy5UBZNZR8/fN0Rh5xPz/z0sbPtKsku', 'User', 'ROLE_CUSTOMER');
 
 /*==============================================================*/
 /* Table: Employees                                             */
