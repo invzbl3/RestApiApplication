@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ExceptionHandlingController {
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleProductNotFoundException(HttpServletRequest request, Exception exception) {
+    public ModelAndView handleProjectNotFoundException(HttpServletRequest request, Exception exception) {
         ModelAndView mav = new ModelAndView();
 
         mav.addObject("exception", exception);
