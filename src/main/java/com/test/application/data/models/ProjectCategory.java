@@ -74,11 +74,11 @@ public class ProjectCategory {
         this.name = name;
     }
 
-    public Set<Project> getProducts() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProducts(Set<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 }
