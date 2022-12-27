@@ -38,7 +38,7 @@
                     <td>Rs. <%= project.getProjectPrice() %></td>
                     <td>
                         <a class="btn btn-success" href="update?id=<%=project.getProjectId()%>" role="button">Edit</a>
-                        <a onclick="return confirm('Are you sure you want to delete it?');" class="btn btn-danger" href="delete?id=<%= p.getProjectId() %>" role="button">Delete</a>
+                        <a onclick="return confirm('Are you sure you want to delete it?');" class="btn btn-danger" href="delete?id=<%= project.getProjectId() %>" role="button">Delete</a>
                     </td>
                 </tr>
                 <%
