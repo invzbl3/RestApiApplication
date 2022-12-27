@@ -17,8 +17,8 @@ public class ProjectCategoryService {
     @Autowired
     ProjectCategoryRepository projectCategoryRepository;
 
-    public void save(ProjectCategory productCategory) {
-        projectCategoryRepository.save(productCategory);
+    public void save(ProjectCategory projectCategory) {
+        projectCategoryRepository.save(projectCategory);
     }
 
     public void delete(Long id){
