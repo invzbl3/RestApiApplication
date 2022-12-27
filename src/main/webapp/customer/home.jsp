@@ -36,7 +36,7 @@
                                 <td>
                                     <select class="form-control" name="<%=p.getProjectId()%>">
                                         <%
-                                            for(int i=1; i<=p.getProductQty(); i++) {
+                                            for(int i=1; i<=p.getProjectQty(); i++) {
                                                 out.write("<option value=\""+i+"\">"+i+"</option>");
                                             }
                                         %>
