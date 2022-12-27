@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-         import="java.util.*,me.anant.PMS.model.*"%>
+         import="java.util.*,com.test.application.data.models.*"%>
+<%@ page import="com.test.application.data.models.ProjectCategory" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 <main role="main" class="container"> <%@include file="/includes/msg.jsp"%>
     <div class="card">
         <div class="card-header text-white shadow bg-dark">
-            <h2 class="float-left">Product Category</h2>
+            <h2 class="float-left">Project Category</h2>
         </div>
         <div class="card-body">
             <table class="table table-hover">
@@ -22,8 +23,8 @@
                 </thead>
                 <tbody>
                 <%
-                    List<ProductCategory> cList = (List<ProductCategory>) request.getAttribute("cList");
-                    for (ProductCategory c : cList)
+                    List<ProjectCategory> projectCategories = (List<ProjectCategory>) request.getAttribute("cList");
+                    for (ProjectCategory c : projectCategories)
                     {
                 %>
                 <tr>
