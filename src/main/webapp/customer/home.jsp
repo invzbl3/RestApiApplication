@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
          import="java.util.*,me.anant.PMS.model.*"%>
+<%@ page import="com.test.application.data.models.Project" %>
+<%@ page import="com.test.application.data.models.ProjectCategory" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,16 +25,16 @@
                             </thead>
                             <tbody>
                             <%
-                                List<Product> pl = (List<Product>) request.getAttribute("pList");
-                                for (Product p : pl)
+                                List<Project> projectList = (List<Project>) request.getAttribute("pList");
+                                for (Project p : projectList)
                                 {
                             %>
                             <tr>
-                                <td><input type="checkbox" name="productId" value="<%=p.getProductId()%>"></td>
-                                <td><%=p.getProductName()%></td>
-                                <td>Rs. <%= p.getProductPrice() %></td>
+                                <td><input type="checkbox" name="productId" value="<%=p.getProjectId()%>"></td>
+                                <td><%=p.getProjectName()%></td>
+                                <td>Rs. <%= p.getProjectPrice() %></td>
                                 <td>
-                                    <select class="form-control" name="<%=p.getProductId()%>">
+                                    <select class="form-control" name="<%=p.getProjectId()%>">
                                         <%
                                             for(int i=1; i<=p.getProductQty(); i++) {
                                                 out.write("<option value=\""+i+"\">"+i+"</option>");
@@ -59,13 +61,13 @@
                 </div>
                 <div class="card-body">
                     <div class="list-group">
-                        <a href="/customer" class="list-group-item list-group-item-action">All ( <%= pl.size() %> )</a>
+                        <a href="/customer" class="list-group-item list-group-item-action">All ( <%= projectList.size() %> )</a>
                         <%
-                            List<ProductCategory> pcList = (List<ProductCategory>) request.getAttribute("pcList");
-                            for (ProductCategory pc : pcList) {
+                            List<ProjectCategory> pcList = (List<ProjectCategory>) request.getAttribute("pcList");
+                            for (ProjectCategory pc : pcList) {
                         %>
                         <a href="?categoryId=<%= pc.getId() %>" class="list-group-item list-group-item-action">
-                            <%=pc.getName()%> ( <%=pc.getProducts().size()%> )
+                            <%=pc.getName()%> ( <%=pc.getProjects().size()%> )
                         </a>
                         <%
                             }
