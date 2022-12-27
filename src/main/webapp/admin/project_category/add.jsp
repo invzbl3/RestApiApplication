@@ -1,8 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="me.anant.PMS.model.ProductCategory"%>
+<%@page import="com.test.application.data.models.ProjectCategory"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="me.anant.PMS.model.Product"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="com.test.application.data.models.Project"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,11 +13,11 @@
 <main role="main" class="container">
     <%@include file="/includes/msg.jsp"%>
     <div class="card">
-        <c:set var="action" value="/admin/product_category/add"/>
-        <c:set var="title" value="Add Product Category"/>
+        <c:set var="action" value="/admin/project_category/add"/>
+        <c:set var="title" value="Add Project Category"/>
         <c:if test="${command.id > 0}">
-            <c:set var="action" value="/admin/product_category/update"/>
-            <c:set var="title" value="Update Product Category"/>
+            <c:set var="action" value="/admin/project_category/update"/>
+            <c:set var="title" value="Update Project Category"/>
         </c:if>
         <div class="card-header text-white shadow bg-dark">
             <h2 class="float-left">${title}</h2>
