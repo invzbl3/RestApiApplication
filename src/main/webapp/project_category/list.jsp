@@ -10,9 +10,9 @@
 <main role="main" class="container"> <%@include file="/includes/msg.jsp"%>
     <div class="card">
         <div class="card-header text-white shadow bg-dark">
-            <h2 class="float-left">Product Category</h2>
+            <h2 class="float-left">Project Category</h2>
             <a class="anchor btn-success btn-lg float-right" href="add" style="text-decoration: none;"> <i class="fa fa-plus"></i> Add
-                Product Category
+                Project Category
             </a>
         </div>
         <div class="card-body">
@@ -26,8 +26,8 @@
                 </thead>
                 <tbody>
                 <%
-                    List<ProductCategory> cList = (List<ProductCategory>) request.getAttribute("cList");
-                    for (ProductCategory c : cList)
+                    List<ProjectCategory> projectCategories = (List<ProjectCategory>) request.getAttribute("cList");
+                    for (ProjectCategory c : projectCategories)
                     {
                 %>
                 <tr>
