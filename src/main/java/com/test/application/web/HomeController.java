@@ -42,7 +42,7 @@ public class HomeController {
         if (categoryId.isPresent()) {
             projectList = projectServiceImpl.findByCategoryId(categoryId.get());
         } else {
-            projectList = projectService.findAllProjects();
+            projectList = projectServiceImpl.findAllProjects();
         }
         ModelAndView modelAndView = new ModelAndView("customer/home");
         modelAndView.addObject("projectList", projectList);
