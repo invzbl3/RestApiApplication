@@ -30,7 +30,7 @@
                                 {
                             %>
                             <tr>
-                                <td><input type="checkbox" name="productId" value="<%=p.getProjectId()%>"></td>
+                                <td><input type="checkbox" name="projectId" value="<%=p.getProjectId()%>"></td>
                                 <td><%=p.getProjectName()%></td>
                                 <td>Rs. <%= p.getProjectPrice() %></td>
                                 <td>
