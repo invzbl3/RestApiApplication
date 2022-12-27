@@ -9,7 +9,7 @@
             <a class="navbar-brand" href="/">Project Management System</a>
         </sec:authorize>
         <sec:authorize access="hasRole('ADMIN')">
-            <a class="navbar-brand" href="/admin/product/list">Project Management System</a>
+            <a class="navbar-brand" href="/admin/project/list">Project Management System</a>
         </sec:authorize>
         <sec:authorize access="hasRole('CUSTOMER')">
             <a class="navbar-brand" href="/customer/order_place"></a>
