@@ -13,11 +13,11 @@
 <main role="main" class="container">
     <%@include file="/includes/msg.jsp"%>
     <div class="card">
-        <c:set var="action" value="/admin/product_category/add"/>
-        <c:set var="title" value="Add Product Category"/>
+        <c:set var="action" value="/admin/project_category/add"/>
+        <c:set var="title" value="Add Project Category"/>
         <c:if test="${command.id > 0}">
-            <c:set var="action" value="/admin/product_category/update"/>
-            <c:set var="title" value="Update Product Category"/>
+            <c:set var="action" value="/admin/project_category/update"/>
+            <c:set var="title" value="Update Project Category"/>
         </c:if>
         <div class="card-header text-white shadow bg-dark">
             <h2 class="float-left">${title}</h2>
