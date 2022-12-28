@@ -3,6 +3,7 @@ package com.test.application.web;
 import com.test.application.exception.ErrorHandling;
 import com.test.application.service.ProjectService;
 import com.test.application.service.adaptor.ProjectAdaptor;
+import com.test.application.service.impl.ProjectServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +46,9 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    ProjectServiceImpl projectServiceImpl;
 
     @Autowired
     ProjectService projectService;
@@ -169,7 +173,7 @@ public class ProjectController {
 
     @GetMapping("/admin/project/list")
     public ModelAndView list() {
-        List<ProjectDTO> projectList = projectService.findAllProjects();
+        List<Project> projectList = projectServiceImpl.get();
         ModelAndView modelAndView = new ModelAndView("/admin/project/list");
         modelAndView.addObject("projectList", projectList);
         return modelAndView;

@@ -46,4 +46,8 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectDTO> findByCategoryId(Long categoryId) {
         return categoryRepository.findByCategoryId(categoryId);
     }
+
+    public List<Project> get(){
+        return (List<Project>) categoryRepository.findAll();
+    }
 }
