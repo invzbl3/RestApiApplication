@@ -51,7 +51,7 @@ public class AdminController {
                           final RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
             model.addAttribute("pcList", categoryService.get());
-            return "admin/project/add";
+            return "/admin/project/add";
         }
         projectService.save(project);
         redirectAttributes.addFlashAttribute("msg", "Project added successfully");
@@ -59,7 +59,7 @@ public class AdminController {
         return "redirect:/admin/project/add";
     }
 
-    @GetMapping("admin/project/list")
+    @GetMapping("/admin/project/list")
     public ModelAndView list() {
         List<Project> projectList = projectServiceImpl.get();
         ModelAndView modelAndView = new ModelAndView("admin/project/list");
@@ -93,7 +93,7 @@ public class AdminController {
                              final RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
             model.addAttribute("pcList", categoryService.get());
-            return "admin/project/add";
+            return "/admin/project/add";
         }
         projectServiceImpl.save(project);
         redirectAttributes.addFlashAttribute("msg", "Project Updated successfully");
