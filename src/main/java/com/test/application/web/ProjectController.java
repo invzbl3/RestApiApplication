@@ -13,9 +13,9 @@ import com.test.application.data.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
@@ -46,9 +46,6 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
-
-    @Autowired
-    ProjectServiceImpl projectServiceImpl;
 
     @Autowired
     ProjectService projectService;
@@ -169,13 +166,5 @@ public class ProjectController {
             return new ResponseEntity<>(projectDTO, HttpStatus.OK);
         }
         return new ResponseEntity<>(new ProjectDTO("", "", ""), HttpStatus.BAD_REQUEST);
-    }
-
-    @GetMapping("/admin/project/list")
-    public ModelAndView list() {
-        List<Project> projectList = projectServiceImpl.get();
-        ModelAndView modelAndView = new ModelAndView("/admin/project/list");
-        modelAndView.addObject("projectList", projectList);
-        return modelAndView;
     }
 }
