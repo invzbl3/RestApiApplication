@@ -37,7 +37,7 @@ public class AdminController {
 
     @GetMapping("/admin/project/add")
     public ModelAndView addView() {
-        ModelAndView modelAndView = new ModelAndView("admin/project/add");
+        ModelAndView modelAndView = new ModelAndView("/admin/project/add");
         modelAndView.addObject("pcList", categoryService.get());
         modelAndView.addObject("command", new Project());
         return modelAndView;
@@ -62,7 +62,7 @@ public class AdminController {
     @GetMapping("/admin/project/list")
     public ModelAndView list() {
         List<Project> projectList = projectServiceImpl.get();
-        ModelAndView modelAndView = new ModelAndView("admin/project/list");
+        ModelAndView modelAndView = new ModelAndView("/admin/project/list");
         modelAndView.addObject("projectList", projectList);
         return modelAndView;
     }
@@ -80,7 +80,7 @@ public class AdminController {
     public ModelAndView updateView(long id) throws ProjectNotFoundException {
         Optional<Project> optional = projectServiceImpl.findById(id);
         Project product = optional.get();
-        ModelAndView modelAndView = new ModelAndView("admin/project/add");
+        ModelAndView modelAndView = new ModelAndView("/admin/project/add");
         modelAndView.addObject("command", product);
         modelAndView.addObject("pcList", categoryService.get());
         return modelAndView;
@@ -103,7 +103,7 @@ public class AdminController {
 
     @GetMapping("/admin/project/report")
     public ModelAndView report() {
-        ModelAndView modelAndView = new ModelAndView("admin/project/report");
+        ModelAndView modelAndView = new ModelAndView("/admin/project/report");
         modelAndView.addObject("pList", projectServiceImpl.get());
         return modelAndView;
     }
