@@ -62,7 +62,7 @@ public class AdminController {
     @GetMapping("/admin/project/list")
     public ModelAndView list() {
         List<Project> projectList = projectServiceImpl.get();
-        ModelAndView modelAndView = new ModelAndView("/admin/project/list");
+        ModelAndView modelAndView = new ModelAndView("../admin/project/list");
         modelAndView.addObject("projectList", projectList);
         return modelAndView;
     }
