@@ -1,6 +1,7 @@
 package com.test.application.web;
 
 import com.test.application.data.models.Project;
+import com.test.application.exception.ProjectNotFoundException;
 import com.test.application.service.ProjectCategoryService;
 import com.test.application.service.ProjectService;
 import com.test.application.service.impl.ProjectServiceImpl;
@@ -43,13 +44,16 @@ public class AdminController {
     }
 
     @PostMapping("/admin/project/add")
-    public String add(@ModelAttribute("command") @Valid Project product, BindingResult result, Model model,
-                      final RedirectAttributes redirectAttributes) {
+    public String add(@ModelAttribute("command")
+                          @Valid Project project,
+                          BindingResult result,
+                          Model model,
+                          final RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
             model.addAttribute("pcList", categoryService.get());
             return "admin/project/add";
         }
-        projectService.save(product);
+        projectService.save(project);
         redirectAttributes.addFlashAttribute("msg", "Project added successfully");
         redirectAttributes.addFlashAttribute("class", "alert-success");
         return "redirect:/admin/project/add";
