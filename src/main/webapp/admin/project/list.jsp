@@ -50,6 +50,6 @@
     </div>
     <br><br><br>
 </main>
-<%@include file="../includes/footer.jsp"%>
+<%@include file="../../includes/footer.jsp"%>
 </body>
 </html>
