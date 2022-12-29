@@ -4,11 +4,13 @@ import com.test.application.data.models.Project;
 import com.test.application.dto.ProjectDTO;
 import com.test.application.data.repository.CategoryRepository;
 import com.test.application.data.repository.ProjectRepository;
+import com.test.application.exception.ProjectNotFoundException;
 import com.test.application.service.ProjectService;
 import com.test.application.service.adaptor.ProjectAdaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author invzbl3 on 12/20/2022
@@ -47,7 +49,19 @@ public class ProjectServiceImpl implements ProjectService {
         return categoryRepository.findByCategoryId(categoryId);
     }
 
+    public void delete(Long id) {
+        projectRepository.deleteById(id);
+    }
+
     public List<Project> get(){
         return (List<Project>) categoryRepository.findAll();
+    }
+
+    public Optional<Project> findById(long id) throws ProjectNotFoundException {
+        Optional<Project> optionalProject = projectRepository.findById(id);
+        if (optionalProject.isEmpty()) {
+            throw new ProjectNotFoundException("Project not available");
+        }
+        return optionalProject;
     }
 }

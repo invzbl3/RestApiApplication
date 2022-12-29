@@ -70,7 +70,7 @@ public class AdminController {
     @GetMapping("/admin/project/delete")
     public String list(@RequestParam("id") long id,
                        final RedirectAttributes redirectAttributes) {
-        projectService.delete(id);
+        projectServiceImpl.delete(id);
         redirectAttributes.addFlashAttribute("msg", "Project deleted successfully");
         redirectAttributes.addFlashAttribute("class", "alert-success");
         return "redirect:/admin/project/list";
@@ -78,7 +78,7 @@ public class AdminController {
 
     @GetMapping("/admin/project/update")
     public ModelAndView updateView(long id) throws ProjectNotFoundException {
-        Optional<Project> optional = projectService.findById(id);
+        Optional<Project> optional = projectServiceImpl.findById(id);
         Project product = optional.get();
         ModelAndView modelAndView = new ModelAndView("admin/project/add");
         modelAndView.addObject("command", product);
@@ -95,7 +95,7 @@ public class AdminController {
             model.addAttribute("pcList", categoryService.get());
             return "admin/project/add";
         }
-        productService.save(project);
+        projectServiceImpl.save(project);
         redirectAttributes.addFlashAttribute("msg", "Project Updated successfully");
         redirectAttributes.addFlashAttribute("class", "alert-success");
         return "redirect:/admin/project/list";
@@ -104,7 +104,7 @@ public class AdminController {
     @GetMapping("/admin/project/report")
     public ModelAndView report() {
         ModelAndView modelAndView = new ModelAndView("admin/project/report");
-        modelAndView.addObject("pList", productService.get());
+        modelAndView.addObject("pList", projectServiceImpl.get());
         return modelAndView;
     }
 }
