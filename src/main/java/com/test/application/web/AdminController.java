@@ -59,10 +59,10 @@ public class AdminController {
         return "redirect:/admin/project/add";
     }
 
-    @GetMapping("/admin/project/list")
+    @GetMapping("admin/project/list")
     public ModelAndView list() {
         List<Project> projectList = projectServiceImpl.get();
-        ModelAndView modelAndView = new ModelAndView("../admin/project/list");
+        ModelAndView modelAndView = new ModelAndView("admin/project/list");
         modelAndView.addObject("projectList", projectList);
         return modelAndView;
     }
