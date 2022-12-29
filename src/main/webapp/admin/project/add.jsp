@@ -6,12 +6,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <%@include file="/includes/head.jsp"%>
+    <%@include file="../../includes/head.jsp"%>
 </head>
 <body style="background-color: #f8f9fa !important;">
-<%@include file="/includes/header.jsp"%>
+<%@include file="../../includes/header.jsp"%>
 <main role="main" class="container">
-    <%@include file="/includes/msg.jsp"%>
+    <%@include file="../../includes/msg.jsp"%>
     <div class="card">
         <c:set var="action" value="/admin/project/add"/>
         <c:set var="title" value="Add Project"/>
@@ -54,6 +54,6 @@
 
 <br><br><br>
 
-<%@include file="/includes/footer.jsp"%>
+<%@include file="../../includes/footer.jsp"%>
 </body>
 </html>
