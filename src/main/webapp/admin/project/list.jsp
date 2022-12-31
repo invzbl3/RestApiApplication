@@ -33,12 +33,12 @@
                     {
                 %>
                 <tr>
-                    <th scope="row"><%=project.getProjectId()%></th>
-                    <td><%=project.getProjectName()%></td>
-                    <td>Rs. <%= project.getProjectPrice() %></td>
+                    <th scope="row"><%=project.getId()%></th>
+                    <td><%=project.getName()%></td>
+                    <td><%=project.getAbbreviation()%></td>
                     <td>
-                        <a class="btn btn-success" href="update?id=<%=project.getProjectId()%>" role="button">Edit</a>
-                        <a onclick="return confirm('Are you sure you want to delete it?');" class="btn btn-danger" href="delete?id=<%= project.getProjectId() %>" role="button">Delete</a>
+                        <a class="btn btn-success" href="update?id=<%=project.getId()%>" role="button">Edit</a>
+                        <a onclick="return confirm('Are you sure you want to delete it?');" class="btn btn-danger" href="delete?id=<%= project.getId() %>" role="button">Delete</a>
                     </td>
                 </tr>
                 <%
