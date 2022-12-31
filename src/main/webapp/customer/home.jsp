@@ -20,28 +20,19 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Qty</th>
                             </tr>
                             </thead>
                             <tbody>
                             <%
-                                List<Project> projectList = (List<Project>) request.getAttribute("pList");
+                                List<Project> projectList = (List<Project>) request.getAttribute("projectList");
                                 for (Project p : projectList)
                                 {
                             %>
                             <tr>
-                                <td><input type="checkbox" name="projectId" value="<%=p.getProjectId()%>"></td>
-                                <td><%=p.getProjectName()%></td>
-                                <td>Rs. <%= p.getProjectPrice() %></td>
-                                <td>
-                                    <select class="form-control" name="<%=p.getProjectId()%>">
-                                        <%
-                                            for(int i=1; i<=p.getProjectQty(); i++) {
-                                                out.write("<option value=\""+i+"\">"+i+"</option>");
-                                            }
-                                        %>
-                                    </select>
-                                </td>
+                                <td><input type="checkbox" name="projectId" value="<%=p.getId()%>"></td>
+                                <td><%=p.getName()%></td>
+                                <td><%=p.getAbbreviation()%></td>
+                                <td><%=p.getCustomer()%></td>
                             </tr>
                             <%
                                 }
@@ -63,8 +54,8 @@
                     <div class="list-group">
                         <a href="/customer" class="list-group-item list-group-item-action">All ( <%= projectList.size() %> )</a>
                         <%
-                            List<ProjectCategory> pcList = (List<ProjectCategory>) request.getAttribute("pcList");
-                            for (ProjectCategory pc : pcList) {
+                            List<ProjectCategory> projectCategory = (List<ProjectCategory>) request.getAttribute("projectCategory");
+                            for (ProjectCategory pc : projectCategory) {
                         %>
                         <a href="?categoryId=<%= pc.getId() %>" class="list-group-item list-group-item-action">
                             <%=pc.getName()%> ( <%=pc.getProjects().size()%> )
