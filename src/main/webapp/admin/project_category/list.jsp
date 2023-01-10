@@ -27,8 +27,8 @@
                 </thead>
                 <tbody>
                 <%
-                    List<ProjectCategory> cList = (List<ProjectCategory>) request.getAttribute("cList");
-                    for (ProjectCategory c : cList)
+                    List<ProjectCategory> projectCategory = (List<ProjectCategory>) request.getAttribute("projectCategory");
+                    for (ProjectCategory c : projectCategory)
                     {
                 %>
                 <tr>

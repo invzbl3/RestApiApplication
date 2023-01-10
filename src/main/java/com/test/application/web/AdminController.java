@@ -67,6 +67,14 @@ public class AdminController {
         return modelAndView;
     }
 
+    @GetMapping("/admin/project_category/list")
+    public ModelAndView projectCategoryList() {
+        List<Project> projectList = projectServiceImpl.get();
+        ModelAndView modelAndView = new ModelAndView("/admin/project_category/list");
+        modelAndView.addObject("projectList", projectList);
+        return modelAndView;
+    }
+
     @GetMapping("/admin/project/delete")
     public String list(@RequestParam("id") long id,
                        final RedirectAttributes redirectAttributes) {
