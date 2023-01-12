@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="com.test.application.data.models.ProjectCategory"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="com.test.application.data.models.Project"%>
@@ -39,7 +40,7 @@
                 <div class="form-group">
                     <label for="projectCategory" class="control-label">Project Category</label>
                     <form:select path="category.id" id="projectCategory" cssClass="form-control">
-                        <c:forEach items="${pcList}" var="category">
+                        <c:forEach items="${projectCategory}" var="category">
                             <form:option value="${category.id}">${category.name}</form:option>
                         </c:forEach>
                     </form:select>

@@ -23,8 +23,8 @@
                 </thead>
                 <tbody>
                 <%
-                    List<ProjectCategory> projectList = (List<ProjectCategory>) request.getAttribute("projectList");
-                    for (ProjectCategory c : projectList)
+                    List<ProjectCategory> projectCategory = (List<ProjectCategory>) request.getAttribute("projectCategory");
+                    for (ProjectCategory c : projectCategory)
                     {
                 %>
                 <tr>

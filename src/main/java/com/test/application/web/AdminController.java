@@ -1,6 +1,7 @@
 package com.test.application.web;
 
 import com.test.application.data.models.Project;
+import com.test.application.data.models.ProjectCategory;
 import com.test.application.exception.ProjectNotFoundException;
 import com.test.application.service.ProjectCategoryService;
 import com.test.application.service.ProjectService;
@@ -38,7 +39,7 @@ public class AdminController {
     @GetMapping("/admin/project/add")
     public ModelAndView addView() {
         ModelAndView modelAndView = new ModelAndView("/admin/project/add");
-        modelAndView.addObject("pcList", categoryService.get());
+        modelAndView.addObject("projectCategory", categoryService.get());
         modelAndView.addObject("command", new Project());
         return modelAndView;
     }
@@ -50,7 +51,7 @@ public class AdminController {
                           Model model,
                           final RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
-            model.addAttribute("pcList", categoryService.get());
+            model.addAttribute("projectCategory", categoryService.get());
             return "/admin/project/add";
         }
         projectService.save(project);
@@ -67,10 +68,10 @@ public class AdminController {
         return modelAndView;
     }
 
-    @GetMapping("/admin/project_category/list")
+    @GetMapping("admin/project_category/list")
     public ModelAndView projectCategoryList() {
         List<Project> projectList = projectServiceImpl.get();
-        ModelAndView modelAndView = new ModelAndView("/admin/project_category/list");
+        ModelAndView modelAndView = new ModelAndView("admin/project_category/list");
         modelAndView.addObject("projectList", projectList);
         return modelAndView;
     }
@@ -90,7 +91,7 @@ public class AdminController {
         Project product = optional.get();
         ModelAndView modelAndView = new ModelAndView("/admin/project/add");
         modelAndView.addObject("command", product);
-        modelAndView.addObject("pcList", categoryService.get());
+        modelAndView.addObject("projectCategory", categoryService.get());
         return modelAndView;
     }
 
@@ -100,7 +101,7 @@ public class AdminController {
                              Model model,
                              final RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
-            model.addAttribute("pcList", categoryService.get());
+            model.addAttribute("projectCategory", categoryService.get());
             return "/admin/project/add";
         }
         projectServiceImpl.save(project);

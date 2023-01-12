@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="projectCategory" class="control-label">Project Category</label>
                     <form:select path="category.id" id="projectCategory" cssClass="form-control">
-                        <c:forEach items="${pcList}" var="category">
+                        <c:forEach items="${projectCategory}" var="category">
                             <form:option value="${category.id}">${category.name}</form:option>
                         </c:forEach>
                     </form:select>
